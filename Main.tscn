@@ -38,66 +38,77 @@ margin_right = 904.0
 margin_bottom = 520.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
-margin_left = 83.0
+margin_left = 10.0
 margin_top = 137.0
-margin_right = 700.0
+margin_right = 773.0
 margin_bottom = 303.0
 custom_constants/separation = 22
 
-[node name="Options" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
-margin_right = 74.0
+[node name="Container" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
+margin_right = 220.0
 margin_bottom = 166.0
+
+[node name="Options" type="HBoxContainer" parent="CenterContainer/HBoxContainer/Container"]
+margin_right = 220.0
+margin_bottom = 140.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 20
 
-[node name="DiceSettings" type="VBoxContainer" parent="CenterContainer/HBoxContainer/Options"]
-margin_right = 74.0
-margin_bottom = 42.0
+[node name="DiceSettings" type="VBoxContainer" parent="CenterContainer/HBoxContainer/Container/Options"]
+margin_right = 100.0
+margin_bottom = 58.0
 
-[node name="DiceText" type="Label" parent="CenterContainer/HBoxContainer/Options/DiceSettings"]
-margin_right = 74.0
+[node name="DiceText" type="Label" parent="CenterContainer/HBoxContainer/Container/Options/DiceSettings"]
+margin_right = 100.0
 margin_bottom = 14.0
 text = "Dice edges"
 valign = 1
 
-[node name="Dice" type="SpinBox" parent="CenterContainer/HBoxContainer/Options/DiceSettings"]
+[node name="Dice" type="SpinBox" parent="CenterContainer/HBoxContainer/Container/Options/DiceSettings"]
 margin_top = 18.0
-margin_right = 74.0
-margin_bottom = 42.0
+margin_right = 100.0
+margin_bottom = 58.0
+rect_min_size = Vector2( 100, 40 )
+min_value = 2.0
+max_value = 1000.0
+value = 2.0
 rounded = true
+align = 1
 
-[node name="AmountSettings" type="VBoxContainer" parent="CenterContainer/HBoxContainer/Options"]
-margin_top = 62.0
-margin_right = 74.0
-margin_bottom = 104.0
+[node name="AmountSettings" type="VBoxContainer" parent="CenterContainer/HBoxContainer/Container/Options"]
+margin_left = 120.0
+margin_right = 220.0
+margin_bottom = 58.0
 
-[node name="AmountText" type="Label" parent="CenterContainer/HBoxContainer/Options/AmountSettings"]
-margin_right = 74.0
+[node name="AmountText" type="Label" parent="CenterContainer/HBoxContainer/Container/Options/AmountSettings"]
+margin_right = 100.0
 margin_bottom = 14.0
 text = "Amount"
 valign = 1
 
-[node name="Amount" type="SpinBox" parent="CenterContainer/HBoxContainer/Options/AmountSettings"]
+[node name="Amount" type="SpinBox" parent="CenterContainer/HBoxContainer/Container/Options/AmountSettings"]
 margin_top = 18.0
-margin_right = 74.0
-margin_bottom = 42.0
+margin_right = 100.0
+margin_bottom = 58.0
+rect_min_size = Vector2( 100, 40 )
 min_value = 1.0
 max_value = 1000.0
 value = 1.0
 rounded = true
+align = 1
 
-[node name="Roll" type="Button" parent="CenterContainer/HBoxContainer/Options"]
-margin_top = 124.0
-margin_right = 74.0
-margin_bottom = 146.0
+[node name="Roll" type="Button" parent="CenterContainer/HBoxContainer/Container"]
+margin_top = 144.0
+margin_right = 220.0
+margin_bottom = 166.0
 size_flags_vertical = 0
 text = "Roll"
 icon = ExtResource( 2 )
 
 [node name="Results" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
-margin_left = 96.0
-margin_right = 136.0
+margin_left = 242.0
+margin_right = 282.0
 margin_bottom = 166.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -124,8 +135,8 @@ align = 1
 valign = 1
 
 [node name="RolledDicesArray" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
-margin_left = 158.0
-margin_right = 333.0
+margin_left = 304.0
+margin_right = 479.0
 margin_bottom = 166.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -151,8 +162,8 @@ valign = 1
 autowrap = true
 
 [node name="OptionalSettings" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
-margin_left = 355.0
-margin_right = 617.0
+margin_left = 501.0
+margin_right = 763.0
 margin_bottom = 166.0
 custom_constants/separation = 10
 
@@ -327,7 +338,7 @@ text = "..."
 align = 1
 valign = 1
 
-[connection signal="pressed" from="CenterContainer/HBoxContainer/Options/Roll" to="." method="_on_Roll_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/Container/Roll" to="." method="_on_Roll_pressed"]
 [connection signal="pressed" from="CenterContainer/HBoxContainer/OptionalSettings/HBoxContainer/ClearOptionalValues" to="." method="_on_ClearOptionalValues_pressed"]
 [connection signal="pressed" from="CenterContainer/HBoxContainer/OptionalSettings/FailureSettings/HBoxContainer/DecreaseButtonFailure" to="." method="_on_DecreaseButtonFailure_pressed"]
 [connection signal="pressed" from="CenterContainer/HBoxContainer/OptionalSettings/FailureSettings/HBoxContainer/AddButtonFailure" to="." method="_on_AddButtonFailure_pressed"]
