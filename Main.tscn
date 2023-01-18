@@ -132,23 +132,29 @@ size_flags_vertical = 3
 alignment = 1
 
 [node name="RolledDices" type="Label" parent="CenterContainer/HBoxContainer/RolledDicesArray"]
-margin_top = 61.0
+margin_top = 59.0
 margin_right = 175.0
-margin_bottom = 75.0
+margin_bottom = 73.0
 text = "Rolled dices:"
 align = 1
 valign = 1
 
 [node name="RollsTable" type="Label" parent="CenterContainer/HBoxContainer/RolledDicesArray"]
-margin_top = 79.0
+margin_top = 77.0
 margin_right = 175.0
-margin_bottom = 104.0
+margin_bottom = 102.0
 rect_min_size = Vector2( 175, 25 )
 size_flags_horizontal = 4
 text = "No rolled dices"
 align = 1
 valign = 1
 autowrap = true
+
+[node name="GridContainer" type="GridContainer" parent="CenterContainer/HBoxContainer/RolledDicesArray"]
+margin_top = 106.0
+margin_right = 175.0
+margin_bottom = 106.0
+columns = 8
 
 [node name="OptionalSettings" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
 margin_left = 355.0

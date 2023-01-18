@@ -49,10 +49,13 @@ func _on_Roll_pressed():
 	get_node("CenterContainer/HBoxContainer/Results/Result").text = var2str(result)
 	
 	for i in range(results.size()):
+		var node = Label.new()
 		if(i == 0):
 			get_node("CenterContainer/HBoxContainer/RolledDicesArray/RollsTable").text = var2str(results[i])
 			continue
 		get_node("CenterContainer/HBoxContainer/RolledDicesArray/RollsTable").text = get_node("CenterContainer/HBoxContainer/RolledDicesArray/RollsTable").text + ", " + var2str(results[i])
+		node.text = var2str(results[i])
+		#$CenterContainer/HBoxContainer/RolledDicesArray/GridContainer.add_child(node)
 	
 	_checkFailures()
 	_checkSuccess()
