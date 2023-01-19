@@ -45,7 +45,6 @@ mouse_default_cursor_shape = 2
 text = "Open"
 
 [node name="OptionalSettings" type="VBoxContainer" parent="OptionalSettingsMain"]
-visible = false
 margin_top = 25.0
 margin_right = 784.0
 margin_bottom = 246.0
@@ -308,13 +307,12 @@ rounded = true
 align = 1
 
 [node name="Roll" type="Button" parent="CenterContainer/VBoxContainer/Container"]
-margin_left = 60.0
 margin_top = 83.0
-margin_right = 160.0
+margin_right = 220.0
 margin_bottom = 123.0
 rect_min_size = Vector2( 100, 40 )
 mouse_default_cursor_shape = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 5
 text = "Roll"
 
 [node name="Results" type="VBoxContainer" parent="CenterContainer/VBoxContainer/Container"]
@@ -346,7 +344,7 @@ valign = 1
 
 [node name="RolledDicesArray" type="VBoxContainer" parent="."]
 margin_left = 120.0
-margin_top = 473.0
+margin_top = 477.0
 margin_right = 904.0
 margin_bottom = 520.0
 grow_vertical = 2
@@ -372,11 +370,16 @@ align = 1
 valign = 1
 autowrap = true
 
-[node name="GridContainer" type="GridContainer" parent="RolledDicesArray"]
-margin_left = 392.0
-margin_top = 47.0
-margin_right = 392.0
-margin_bottom = 47.0
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_left = 120.0
+margin_top = 520.0
+margin_right = 904.0
+margin_bottom = 520.0
+size_flags_vertical = 8
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+margin_bottom = 75.0
+rect_min_size = Vector2( 0, 75 )
 size_flags_horizontal = 4
 columns = 100
 

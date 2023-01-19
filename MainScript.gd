@@ -28,6 +28,9 @@ func _rolldice(dice, amount):
 func _clearAll():
 	total = 0
 	results.clear()
+	for i in $ScrollContainer/GridContainer.get_children():
+		$ScrollContainer/GridContainer.remove_child(i)
+		i.queue_free()
 	$CenterContainer/VBoxContainer/Container/Results/Result.text = "..."
 	$RolledDicesArray/RollsTable.text = "Rolling..."
 	$OptionalSettingsMain/OptionalSettings/OptionalResultHBox/FailureVBox/FailureResultValue.text = "..."
@@ -47,16 +50,18 @@ func _on_Roll_pressed():
 	
 	var result = _rolldice(dice, amount)
 	
+	$RolledDicesArray/RollsTable.text = ""
 	$CenterContainer/VBoxContainer/Container/Results/Result.text = var2str(result)
-	
+	$RolledDicesArray/RollsTable.hide()
 	for i in range(results.size()):
 		var node = Label.new()
+		# Clear "Rolling" -text
 		# if(i == 0):
 		# 	$RolledDicesArray/RollsTable.text = var2str(results[i])
 		# 	continue
 		# $RolledDicesArray/RollsTable.text = $RolledDicesArray/RollsTable.text + ", " + var2str(results[i])
 		node.text = var2str(results[i])
-		$RolledDicesArray/GridContainer.add_child(node)
+		$ScrollContainer/GridContainer.add_child(node)
 	
 	_checkFailures()
 	_checkSuccess()
