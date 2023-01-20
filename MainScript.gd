@@ -9,10 +9,22 @@ var totalFailures = 0
 var totalSuccess = 0
 var settingsOpened = false
 
+onready var resultGrid = $App/VBoxContainer/RolledDicesArray/ScrollContainer/GridContainer
+onready var resultLabel = $App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/Container/Results/Result
+onready var rollsTable = $App/VBoxContainer/RolledDicesArray/RollsTable
+onready var failureResultValue = $App/OptionalSettingsMain/OptionalSettings/OptionalResultHBox/FailureVBox/FailureResultValue
+onready var successResultValue = $App/OptionalSettingsMain/OptionalSettings/OptionalResultHBox/SuccessVBox/SuccessResultValue
+onready var diceSpinBox = $App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/Container/HBoxContainer/Options/DiceSettings/Dice
+onready var amountSpinBox =  $App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/Container/HBoxContainer/Options/AmountSettings/Amount
+onready var failureValuesArray = $App/OptionalSettingsMain/OptionalSettings/FailureSettings/HBoxContainer2/FailureValuesArray
+onready var successValuesArray = $App/OptionalSettingsMain/OptionalSettings/SuccessSettings/HBoxContainer/SuccessValuesArray
+
+
+
 func _ready():
 	total = 0
 	roller.randomize()
-	pass # Replace with function body.
+	pass 
 
 func _rolldice(dice, amount):
 		if(typeof(dice) != TYPE_INT || dice == null):
@@ -28,13 +40,13 @@ func _rolldice(dice, amount):
 func _clearAll():
 	total = 0
 	results.clear()
-	for i in $ScrollContainer/GridContainer.get_children():
-		$ScrollContainer/GridContainer.remove_child(i)
+	for i in resultGrid.get_children():
+		resultGrid.remove_child(i)
 		i.queue_free()
-	$CenterContainer/VBoxContainer/Container/Results/Result.text = "..."
-	$RolledDicesArray/RollsTable.text = "Rolling..."
-	$OptionalSettingsMain/OptionalSettings/OptionalResultHBox/FailureVBox/FailureResultValue.text = "..."
-	$OptionalSettingsMain/OptionalSettings/OptionalResultHBox/SuccessVBox/SuccessResultValue.text = "..."
+	resultLabel.text = "..."
+	rollsTable.text = "Rolling..."
+	failureResultValue.text = "..."
+	successResultValue.text = "..."
 	totalFailures = 0
 	totalSuccess = 0
 	allowRoll = false
@@ -45,28 +57,28 @@ func _on_Roll_pressed():
 		return
 	_clearAll()
 	yield(get_tree().create_timer(0.5), "timeout")
-	var dice = int($CenterContainer/VBoxContainer/Container/HBoxContainer/Options/DiceSettings/Dice.value)
-	var amount = int($CenterContainer/VBoxContainer/Container/HBoxContainer/Options/AmountSettings/Amount.value)
+	var dice = int(diceSpinBox.value)
+	var amount = int(amountSpinBox.value)
 	
 	var result = _rolldice(dice, amount)
 	
-	$RolledDicesArray/RollsTable.text = ""
-	$CenterContainer/VBoxContainer/Container/Results/Result.text = var2str(result)
-	$RolledDicesArray/RollsTable.hide()
+	rollsTable.text = ""
+	resultLabel.text = var2str(result)
+	rollsTable.hide()
 	for i in range(results.size()):
 		var node = Label.new()
-		# Clear "Rolling" -text
+		# Old implementation for result table
 		# if(i == 0):
 		# 	$RolledDicesArray/RollsTable.text = var2str(results[i])
 		# 	continue
 		# $RolledDicesArray/RollsTable.text = $RolledDicesArray/RollsTable.text + ", " + var2str(results[i])
 		node.text = var2str(results[i])
-		$ScrollContainer/GridContainer.add_child(node)
+		resultGrid.add_child(node)
 	
 	_checkFailures()
 	_checkSuccess()
-	$OptionalSettingsMain/OptionalSettings/OptionalResultHBox/FailureVBox/FailureResultValue.text = var2str(totalFailures)
-	$OptionalSettingsMain/OptionalSettings/OptionalResultHBox/SuccessVBox/SuccessResultValue.text = var2str(totalSuccess)
+	failureResultValue.text = var2str(totalFailures)
+	successResultValue.text = var2str(totalSuccess)
 	allowRoll = true
 	pass
 
@@ -104,10 +116,10 @@ func _clearOptionalSettings():
 	 successValues = []
 	 totalFailures = 0
 	 totalSuccess = 0
-	 $OptionalSettingsMain/OptionalSettings/OptionalResultHBox/FailureVBox/FailureResultValue.text = "..."
-	 $OptionalSettingsMain/OptionalSettings/OptionalResultHBox/SuccessVBox/SuccessResultValue.text = "..."
-	 $OptionalSettingsMain/OptionalSettings/FailureSettings/HBoxContainer2/FailureValuesArray.text = "..."
-	 $OptionalSettingsMain/OptionalSettings/SuccessSettings/HBoxContainer/SuccessValuesArray.text = "..."
+	 failureResultValue.text = "..."
+	 successResultValue.text = "..."
+	 failureValuesArray.text = "..."
+	 successValuesArray.text = "..."
 	
 func _checkFailures():
 	
@@ -128,60 +140,59 @@ func _checkSuccess():
 func _on_DecreaseButtonFailure_pressed():
 	_removeFailureValue()
 	_updateFailureValues()
-	pass # Replace with function body.
+	pass 
 
-#Tässä
 func _on_AddButtonFailure_pressed():
-	var value = $OptionalSettingsMain/OptionalSettings/FailureSettings/HBoxContainer/FailureValue.value
+	var value = $App/OptionalSettingsMain/OptionalSettings/FailureSettings/HBoxContainer/FailureValue.value
 	_addFailureValue(int(value))
-	pass # Replace with function body.
+	pass 
 
 
 func _on_DecreaseButtonSuccess_pressed():
 	_removeSuccessValue()
 	_updateSuccessValues()
-	pass # Replace with function body.
+	pass 
 
 
 func _on_AddButtonSuccess_pressed():
-	var value = $OptionalSettingsMain/OptionalSettings/SuccessSettings/HBoxContainer2/SuccessValue.value
+	var value = $App/OptionalSettingsMain/OptionalSettings/SuccessSettings/HBoxContainer2/SuccessValue.value
 	_addSuccessValue(int(value))
-	pass # Replace with function body.
+	pass 
 
 
 func _on_ClearOptionalValues_pressed():
 	_clearOptionalSettings()
-	pass # Replace with function body.
+	pass 
 
 
 func _updateFailureValues():
 	if(failureValues.size() == 0):
-		$OptionalSettingsMain/OptionalSettings/FailureSettings/HBoxContainer2/FailureValuesArray.text = "..."
+		failureValuesArray.text = "..."
 		return
 	for i in range(failureValues.size()):
 		if(i == 0):
-			$OptionalSettingsMain/OptionalSettings/FailureSettings/HBoxContainer2/FailureValuesArray.text = var2str(failureValues[i])
+			failureValuesArray.text = var2str(failureValues[i])
 			continue
-		$OptionalSettingsMain/OptionalSettings/FailureSettings/HBoxContainer2/FailureValuesArray.text = $OptionalSettingsMain/OptionalSettings/FailureSettings/HBoxContainer2/FailureValuesArray.text + ", " + var2str(failureValues[i])
+		failureValuesArray.text = failureValuesArray.text + ", " + var2str(failureValues[i])
 
 func _updateSuccessValues():
 	if(successValues.size() == 0):
-		$OptionalSettingsMain/OptionalSettings/SuccessSettings/HBoxContainer/SuccessValuesArray.text = "..."
+		successValuesArray.text = "..."
 		return
 	for i in range(successValues.size()):
 		if(i == 0):
-			$OptionalSettingsMain/OptionalSettings/SuccessSettings/HBoxContainer/SuccessValuesArray.text = var2str(successValues[i])
+			successValuesArray.text = var2str(successValues[i])
 			continue
-		$OptionalSettingsMain/OptionalSettings/SuccessSettings/HBoxContainer/SuccessValuesArray.text = $OptionalSettingsMain/OptionalSettings/SuccessSettings/HBoxContainer/SuccessValuesArray.text + ", " + var2str(successValues[i])
+		successValuesArray.text = successValuesArray.text + ", " + var2str(successValues[i])
 
-
+# Button function for advanced settings
 func _on_OpenSettings_pressed():
 	if(settingsOpened == true):
 		settingsOpened = false
-		$OptionalSettingsMain/OptionalSettings.hide()
-		$OptionalSettingsMain/HBoxContainer/OpenSettings.text = "Open"
+		$App/OptionalSettingsMain/OptionalSettings.hide()
+		$App/OptionalSettingsMain/HBoxContainer/OpenSettings.text = "Open"
 		return
 	settingsOpened = true
-	$OptionalSettingsMain/OptionalSettings.show()
-	$OptionalSettingsMain/HBoxContainer/OpenSettings.text = "Close"
+	$App/OptionalSettingsMain/OptionalSettings.show()
+	$App/OptionalSettingsMain/HBoxContainer/OpenSettings.text = "Close"
 	pass 
