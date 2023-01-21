@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://MainScript.gd" type="Script" id=1]
+[ext_resource path="res://assets/addButton_pressed.png" type="Texture" id=2]
+[ext_resource path="res://assets/deleteButton_pressed.png" type="Texture" id=3]
 [ext_resource path="res://assets/addButton.png" type="Texture" id=4]
 [ext_resource path="res://assets/deleteButton.png" type="Texture" id=5]
+[ext_resource path="res://assets/addButton_normal.png" type="Texture" id=6]
+[ext_resource path="res://assets/deleteButton_normal.png" type="Texture" id=7]
 
 [node name="Main" type="MarginContainer"]
 anchor_right = 1.0
@@ -52,23 +56,23 @@ text = "Open"
 [node name="OptionalSettings" type="VBoxContainer" parent="App/OptionalSettingsMain"]
 visible = false
 margin_top = 25.0
-margin_right = 207.0
+margin_right = 782.0
 margin_bottom = 246.0
 custom_constants/separation = 15
 
 [node name="FailureSettings" type="VBoxContainer" parent="App/OptionalSettingsMain/OptionalSettings"]
-margin_right = 207.0
+margin_right = 782.0
 margin_bottom = 62.0
 custom_constants/separation = 5
 
 [node name="FailureText" type="Label" parent="App/OptionalSettingsMain/OptionalSettings/FailureSettings"]
-margin_right = 207.0
+margin_right = 782.0
 margin_bottom = 14.0
 text = "Failure value"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="App/OptionalSettingsMain/OptionalSettings/FailureSettings"]
 margin_top = 19.0
-margin_right = 207.0
+margin_right = 782.0
 margin_bottom = 43.0
 custom_constants/separation = 10
 
@@ -88,7 +92,9 @@ margin_bottom = 20.0
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture_normal = ExtResource( 5 )
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 5 )
 
 [node name="AddButtonFailure" type="TextureButton" parent="App/OptionalSettingsMain/OptionalSettings/FailureSettings/HBoxContainer"]
 margin_left = 110.0
@@ -98,11 +104,13 @@ margin_bottom = 20.0
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture_normal = ExtResource( 4 )
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 2 )
+texture_hover = ExtResource( 4 )
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="App/OptionalSettingsMain/OptionalSettings/FailureSettings"]
 margin_top = 48.0
-margin_right = 207.0
+margin_right = 782.0
 margin_bottom = 62.0
 
 [node name="Label" type="Label" parent="App/OptionalSettingsMain/OptionalSettings/FailureSettings/HBoxContainer2"]
@@ -119,18 +127,18 @@ text = "..."
 
 [node name="SuccessSettings" type="VBoxContainer" parent="App/OptionalSettingsMain/OptionalSettings"]
 margin_top = 77.0
-margin_right = 207.0
+margin_right = 782.0
 margin_bottom = 139.0
 custom_constants/separation = 5
 
 [node name="SuccessText" type="Label" parent="App/OptionalSettingsMain/OptionalSettings/SuccessSettings"]
-margin_right = 207.0
+margin_right = 782.0
 margin_bottom = 14.0
 text = "Success value"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="App/OptionalSettingsMain/OptionalSettings/SuccessSettings"]
 margin_top = 19.0
-margin_right = 207.0
+margin_right = 782.0
 margin_bottom = 43.0
 custom_constants/separation = 10
 
@@ -150,7 +158,9 @@ margin_bottom = 20.0
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture_normal = ExtResource( 5 )
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 5 )
 
 [node name="AddButtonSuccess" type="TextureButton" parent="App/OptionalSettingsMain/OptionalSettings/SuccessSettings/HBoxContainer2"]
 margin_left = 110.0
@@ -160,11 +170,13 @@ margin_bottom = 20.0
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture_normal = ExtResource( 4 )
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 2 )
+texture_hover = ExtResource( 4 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="App/OptionalSettingsMain/OptionalSettings/SuccessSettings"]
 margin_top = 48.0
-margin_right = 207.0
+margin_right = 782.0
 margin_bottom = 62.0
 
 [node name="Label2" type="Label" parent="App/OptionalSettingsMain/OptionalSettings/SuccessSettings/HBoxContainer"]
@@ -181,7 +193,7 @@ text = "..."
 
 [node name="OptionalResultHBox" type="HBoxContainer" parent="App/OptionalSettingsMain/OptionalSettings"]
 margin_top = 154.0
-margin_right = 207.0
+margin_right = 782.0
 margin_bottom = 186.0
 custom_constants/separation = 50
 
@@ -204,17 +216,17 @@ valign = 1
 
 [node name="SuccessVBox" type="VBoxContainer" parent="App/OptionalSettingsMain/OptionalSettings/OptionalResultHBox"]
 margin_left = 100.0
-margin_right = 151.0
+margin_right = 166.0
 margin_bottom = 32.0
 
 [node name="SuccessResultText" type="Label" parent="App/OptionalSettingsMain/OptionalSettings/OptionalResultHBox/SuccessVBox"]
-margin_right = 51.0
+margin_right = 66.0
 margin_bottom = 14.0
-text = "Success"
+text = "Successes"
 
 [node name="SuccessResultValue" type="Label" parent="App/OptionalSettingsMain/OptionalSettings/OptionalResultHBox/SuccessVBox"]
 margin_top = 18.0
-margin_right = 51.0
+margin_right = 66.0
 margin_bottom = 32.0
 text = "..."
 align = 1
@@ -234,15 +246,18 @@ margin_left = 120.0
 margin_top = 100.0
 margin_right = 902.0
 margin_bottom = 600.0
+mouse_filter = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="App/VBoxContainer"]
 margin_right = 782.0
-margin_bottom = 349.0
+margin_bottom = 372.0
+mouse_filter = 2
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="App/VBoxContainer/HBoxContainer"]
 margin_right = 782.0
-margin_bottom = 349.0
+margin_bottom = 372.0
+mouse_filter = 2
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="App/VBoxContainer/HBoxContainer/VBoxContainer"]
@@ -256,16 +271,16 @@ text = "Dice Roller 2000"
 [node name="CenterContainer" type="CenterContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_top = 18.0
 margin_right = 782.0
-margin_bottom = 349.0
+margin_bottom = 372.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Container" type="VBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer"]
 margin_left = 281.0
-margin_top = 72.0
+margin_top = 83.0
 margin_right = 501.0
-margin_bottom = 259.0
+margin_bottom = 270.0
 custom_constants/separation = 25
 
 [node name="HBoxContainer" type="HBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/Container"]
@@ -360,20 +375,36 @@ align = 1
 valign = 1
 
 [node name="RolledDicesArray" type="VBoxContainer" parent="App/VBoxContainer"]
-margin_top = 353.0
+margin_top = 376.0
 margin_right = 782.0
 margin_bottom = 500.0
 grow_vertical = 2
 alignment = 2
 
-[node name="RolledDices" type="Label" parent="App/VBoxContainer/RolledDicesArray"]
+[node name="HBoxContainer" type="HBoxContainer" parent="App/VBoxContainer/RolledDicesArray"]
 margin_right = 782.0
-margin_bottom = 14.0
+margin_bottom = 20.0
+alignment = 1
+
+[node name="RolledDices" type="Label" parent="App/VBoxContainer/RolledDicesArray/HBoxContainer"]
+margin_left = 329.0
+margin_top = 3.0
+margin_right = 411.0
+margin_bottom = 17.0
 text = "Rolled dices:"
 align = 1
 valign = 1
 
+[node name="SortButton" type="Button" parent="App/VBoxContainer/RolledDicesArray/HBoxContainer"]
+margin_left = 415.0
+margin_right = 452.0
+margin_bottom = 20.0
+focus_mode = 0
+disabled = true
+text = "Sort"
+
 [node name="RollsTable" type="Label" parent="App/VBoxContainer/RolledDicesArray"]
+visible = false
 margin_top = 18.0
 margin_right = 782.0
 margin_bottom = 43.0
@@ -386,9 +417,9 @@ valign = 1
 autowrap = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="App/VBoxContainer/RolledDicesArray"]
-margin_top = 47.0
+margin_top = 24.0
 margin_right = 782.0
-margin_bottom = 147.0
+margin_bottom = 124.0
 rect_min_size = Vector2( 400, 100 )
 mouse_filter = 2
 size_flags_horizontal = 3
@@ -416,3 +447,4 @@ text = "ver. 1.0.0"
 [connection signal="pressed" from="App/OptionalSettingsMain/OptionalSettings/SuccessSettings/HBoxContainer2/AddButtonSuccess" to="." method="_on_AddButtonSuccess_pressed"]
 [connection signal="pressed" from="App/OptionalSettingsMain/OptionalSettings/ClearOptionalValues" to="." method="_on_ClearOptionalValues_pressed"]
 [connection signal="pressed" from="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/Container/Roll" to="." method="_on_Roll_pressed"]
+[connection signal="pressed" from="App/VBoxContainer/RolledDicesArray/HBoxContainer/SortButton" to="." method="_on_SortButton_pressed"]

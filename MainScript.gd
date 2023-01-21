@@ -8,6 +8,7 @@ var successValues = []
 var totalFailures = 0
 var totalSuccess = 0
 var settingsOpened = false
+var sorter = null
 
 onready var resultGrid = $App/VBoxContainer/RolledDicesArray/ScrollContainer/GridContainer
 onready var resultLabel = $App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/Container/Results/Result
@@ -18,12 +19,23 @@ onready var diceSpinBox = $App/VBoxContainer/HBoxContainer/VBoxContainer/CenterC
 onready var amountSpinBox =  $App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/Container/HBoxContainer/Options/AmountSettings/Amount
 onready var failureValuesArray = $App/OptionalSettingsMain/OptionalSettings/FailureSettings/HBoxContainer2/FailureValuesArray
 onready var successValuesArray = $App/OptionalSettingsMain/OptionalSettings/SuccessSettings/HBoxContainer/SuccessValuesArray
+onready var sortButton = $App/VBoxContainer/RolledDicesArray/HBoxContainer/SortButton
 
-
+class CustomSorter:
+	static func customSorter(a, b):
+			if(a > b):
+				return false
+			if(a < b ):
+				return true
+			return 0
 
 func _ready():
 	total = 0
 	roller.randomize()
+	var defaultGridText = Label.new()
+	defaultGridText.text = "No rolled dices!"
+	resultGrid.add_child(defaultGridText)
+	sorter = CustomSorter.new()
 	pass 
 
 func _rolldice(dice, amount):
@@ -44,27 +56,42 @@ func _clearAll():
 		resultGrid.remove_child(i)
 		i.queue_free()
 	resultLabel.text = "..."
-	rollsTable.text = "Rolling..."
 	failureResultValue.text = "..."
 	successResultValue.text = "..."
 	totalFailures = 0
 	totalSuccess = 0
 	allowRoll = false
+	sortButton.disabled = true
+	sortButton.mouse_default_cursor_shape = Control.CURSOR_ARROW
+	sortButton.focus_mode = Control.FOCUS_NONE
+	
+func _setRollingTextToGrid():
+	var gridText = Label.new()
+	gridText.text = "Rolling..."
+	resultGrid.add_child(gridText)
+
+func _setColorToResult(node: Label, i: int):
+	if(node.has_color_override("font_color")):
+		node.add_color_override("font_color", Color(1,1,1))
+	if(failureValues.has(results[i])):
+		node.add_color_override("font_color", Color(1,0,0))
+		return
+	if(successValues.has(results[i])):
+		node.add_color_override("font_color", Color(0,1,0))
+		return
 	
 
 func _on_Roll_pressed():
 	if(allowRoll == false):
 		return
 	_clearAll()
+	_setRollingTextToGrid()
 	yield(get_tree().create_timer(0.5), "timeout")
 	var dice = int(diceSpinBox.value)
 	var amount = int(amountSpinBox.value)
-	
 	var result = _rolldice(dice, amount)
-	
-	rollsTable.text = ""
 	resultLabel.text = var2str(result)
-	rollsTable.hide()
+
 	for i in range(results.size()):
 		var node = Label.new()
 		# Old implementation for result table
@@ -72,7 +99,18 @@ func _on_Roll_pressed():
 		# 	$RolledDicesArray/RollsTable.text = var2str(results[i])
 		# 	continue
 		# $RolledDicesArray/RollsTable.text = $RolledDicesArray/RollsTable.text + ", " + var2str(results[i])
+
+		# Replace the rolling text with the first result value
+		# Prevent flicker effect
+		if(i == 0):
+			var defaultText = resultGrid.get_child(0)
+			defaultText.replace_by(node)
+			defaultText.queue_free()
+			node.text = var2str(results[i])
+			_setColorToResult(node,i)
+			continue
 		node.text = var2str(results[i])
+		_setColorToResult(node,i)
 		resultGrid.add_child(node)
 	
 	_checkFailures()
@@ -80,6 +118,9 @@ func _on_Roll_pressed():
 	failureResultValue.text = var2str(totalFailures)
 	successResultValue.text = var2str(totalSuccess)
 	allowRoll = true
+	sortButton.disabled = false
+	sortButton.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+	sortButton.focus_mode = Control.FOCUS_ALL
 	pass
 
 
@@ -196,3 +237,15 @@ func _on_OpenSettings_pressed():
 	$App/OptionalSettingsMain/OptionalSettings.show()
 	$App/OptionalSettingsMain/HBoxContainer/OpenSettings.text = "Close"
 	pass 
+
+
+func _on_SortButton_pressed():
+	var children = resultGrid.get_children()
+	# var array = []
+	# for i in children.size():
+	# 	array.push_back(children[i].text)
+	results.sort_custom(sorter,"customSorter")
+	for i in children.size():
+		children[i].text = var2str(results[i])
+		_setColorToResult(children[i], i)
+	pass
