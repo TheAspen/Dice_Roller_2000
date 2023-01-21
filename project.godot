@@ -15,6 +15,7 @@ _global_script_class_icons={
 [application]
 
 config/name="DiceRoller2000"
+config/description="A random number generator."
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
