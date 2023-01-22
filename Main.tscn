@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://MainScript.gd" type="Script" id=1]
 [ext_resource path="res://assets/addButton_pressed.png" type="Texture" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://assets/deleteButton.png" type="Texture" id=5]
 [ext_resource path="res://assets/addButton_normal.png" type="Texture" id=6]
 [ext_resource path="res://assets/deleteButton_normal.png" type="Texture" id=7]
-[ext_resource path="res://assets/q_mark4.png" type="Texture" id=8]
 [ext_resource path="res://assets/fonts/FredokaOne-Regular.ttf" type="DynamicFontData" id=9]
 
 [sub_resource type="DynamicFont" id=1]
@@ -327,18 +326,6 @@ Example: D6 have six faces"
 mouse_filter = 0
 text = "Dice faces"
 valign = 1
-
-[node name="TextureRect" type="TextureRect" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/Container/HBoxContainer/Options/DiceSettings/HBoxContainer"]
-visible = false
-margin_left = 75.0
-margin_right = 85.0
-margin_bottom = 10.0
-rect_min_size = Vector2( 10, 10 )
-hint_tooltip = "TEsti"
-size_flags_horizontal = 0
-size_flags_vertical = 0
-texture = ExtResource( 8 )
-expand = true
 
 [node name="Dice" type="SpinBox" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/Container/HBoxContainer/Options/DiceSettings"]
 margin_top = 18.0
