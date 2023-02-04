@@ -26,8 +26,9 @@ description: >- # this means to ignore newlines until "baseurl:"
   Some options can be provided to the rolls, like mark the successful or the failed rolls.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: https://theaspen.github.io/Dice_Roller_2000/ # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: ""
 github_username:  TheAspen
+github_url: https://github.com/TheAspen/Dice_Roller_2000
+license: Dice Roller 2000 is under the [MIT-license](https://github.com/TheAspen/Dice_Roller_2000/blob/5fb63caaf5eb1a318877b4bf1e24432ba320db63/README.txt).
 
 # Build settings
 theme: minima

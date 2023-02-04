@@ -4,12 +4,16 @@ title: Releases
 permalink: /downloads/
 ---
 
+You can download released versions here. It's recommended to use the latest version of the software.
+
+More information about the releases can be found in the [Github](https://github.com/TheAspen/Dice_Roller_2000/releases).
+
 &nbsp;
 
-## &ensp; Windows:
+## Windows:
  
-# &emsp; &emsp; Latest: [v1.0.0](https://github.com/TheAspen/Dice_Roller_2000/releases/download/v1.0.0/DiceRoller2000.exe)
+# &emsp; Latest (64-bit): [v1.0.0](https://github.com/TheAspen/Dice_Roller_2000/releases/download/v1.0.0/DiceRoller2000.exe)
 
-## &ensp; Linux:
+## Linux:
 
-# &emsp; &emsp; Latest: [v1.0.0](https://github.com/TheAspen/Dice_Roller_2000/releases/download/v1.0.0/DiceRoller2000.x86_64)
+# &emsp; Latest (x86_64): [v1.0.0](https://github.com/TheAspen/Dice_Roller_2000/releases/download/v1.0.0/DiceRoller2000.x86_64)

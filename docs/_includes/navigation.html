@@ -13,7 +13,7 @@
         style="
           width: 42px;
           height: auto;
-          position: fixed;
+          position: absolute;
           top: 12px;
           left: 20px;
         "
@@ -32,17 +32,26 @@
         >Downloads</a
       >
       <a
-      style="
-        font-size: larger;
-        color: black;
-        padding-right: 20px;
-        text-underline-offset: 26px;
-      "
-      href="{{ site.baseurl }}/user-guide/"
-      >User Guide</a
-    >
+        style="
+          font-size: larger;
+          color: black;
+          padding-right: 20px;
+          text-underline-offset: 26px;
+          text-decoration-line: line-through;
+          pointer-events: none;
+        "
+        href="{{ site.baseurl }}/user-guide/"
+        >User Guide</a
+      >
       <a
-        style="font-size: larger; color: black; text-underline-offset: 26px"
+        class="disabled"
+        style="
+          text-decoration-line: line-through;
+          font-size: larger;
+          color: black;
+          text-underline-offset: 26px;
+          pointer-events: none;
+        "
         href="{{ site.baseurl }}/about/"
         >About</a
       >
