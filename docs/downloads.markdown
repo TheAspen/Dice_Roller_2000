@@ -11,7 +11,7 @@ More information about the releases can be found in the [Github](https://github.
 &nbsp;
 
 ## Windows:
- 
+
 # &emsp; Latest (64-bit): [v1.0.0](https://github.com/TheAspen/Dice_Roller_2000/releases/download/v1.0.0/DiceRoller2000.exe)
 
 ## Linux:
