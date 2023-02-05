@@ -43,7 +43,8 @@ func _rolldice(dice, amount):
 			return "error"
 		roller.randomize()
 		for _i in range(amount):
-			roller.randomize()
+			# Maybe a bit overkill?
+			# roller.randomize()
 			results.push_back(roller.randi_range(1, dice))
 		for i in range(results.size()):
 			total = total + results[i]
@@ -92,27 +93,27 @@ func _on_Roll_pressed():
 	var result = _rolldice(dice, amount)
 	resultLabel.text = var2str(result)
 
-	for i in range(results.size()):
-		var node = Label.new()
-		# Old implementation for result table
-		# if(i == 0):
-		# 	$RolledDicesArray/RollsTable.text = var2str(results[i])
-		# 	continue
-		# $RolledDicesArray/RollsTable.text = $RolledDicesArray/RollsTable.text + ", " + var2str(results[i])
-
-		# Replace the rolling text with the first result value
-		# Prevent flicker effect
-		if(i == 0):
-			var defaultText = resultGrid.get_child(0)
-			defaultText.replace_by(node)
-			defaultText.queue_free()
-			node.text = var2str(results[i])
-			_setColorToResult(node,i)
-			continue
-		node.text = var2str(results[i])
-		_setColorToResult(node,i)
-		resultGrid.add_child(node)
-	
+#	for i in range(results.size()):
+#		var node = Label.new()
+#		# Old implementation for result table
+#		# if(i == 0):
+#		# 	$RolledDicesArray/RollsTable.text = var2str(results[i])
+#		# 	continue
+#		# $RolledDicesArray/RollsTable.text = $RolledDicesArray/RollsTable.text + ", " + var2str(results[i])
+#
+#		# Replace the rolling text with the first result value
+#		# Prevent flicker effect
+#		if(i == 0):
+#			var defaultText = resultGrid.get_child(0)
+#			defaultText.replace_by(node)
+#			defaultText.queue_free()
+#			node.text = var2str(results[i])
+#			_setColorToResult(node,i)
+#			continue
+#		node.text = var2str(results[i]) # <----
+#		_setColorToResult(node,i)
+#		resultGrid.add_child(node)
+	resultGrid.temp(results)
 	_checkFailures()
 	_checkSuccess()
 	failureResultValue.text = var2str(totalFailures)

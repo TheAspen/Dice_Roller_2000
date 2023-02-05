@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://MainScript.gd" type="Script" id=1]
 [ext_resource path="res://assets/addButton_pressed.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/deleteButton.png" type="Texture" id=5]
 [ext_resource path="res://assets/addButton_normal.png" type="Texture" id=6]
 [ext_resource path="res://assets/deleteButton_normal.png" type="Texture" id=7]
+[ext_resource path="res://GridScript.gd" type="Script" id=8]
 [ext_resource path="res://assets/fonts/FredokaOne-Regular.ttf" type="DynamicFontData" id=9]
 
 [sub_resource type="DynamicFont" id=1]
@@ -459,6 +460,7 @@ margin_right = 391.0
 rect_clip_content = true
 size_flags_horizontal = 6
 columns = 100
+script = ExtResource( 8 )
 
 [node name="VersionLabel" type="Label" parent="."]
 margin_left = 962.0
