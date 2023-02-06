@@ -14,6 +14,17 @@ func _ready():
 	add_child(animationTimer)
 	pass 
 
+# Set color to the result
+func _setColorToResult(node: Label, i: int, failureValues: PoolIntArray, successValues: PoolIntArray, results: PoolIntArray):
+	if(node.has_color_override("font_color")):
+		node.add_color_override("font_color", Color(1,1,1))
+	if(failureValues.has(results[i])):
+		node.add_color_override("font_color", Color(1,0,0))
+		return
+	if(successValues.has(results[i])):
+		node.add_color_override("font_color", Color(0,1,0))
+		return
+
 # Create a random number during "animation"
 func randomizer(maxNumber: int):
 	return generator.randi_range(1, maxNumber)
@@ -23,7 +34,8 @@ func doAnimation(maxNumber: int):
 	
 	pass
 
-func temp(results): 
+# Core function, called from MainScript
+func temp(results: PoolIntArray, failureValues: PoolIntArray, successValues: PoolIntArray): 
 	for i in range(results.size()):
 		var node = Label.new()
 		if(i == 0):
@@ -31,9 +43,9 @@ func temp(results):
 			defaultText.replace_by(node)
 			defaultText.queue_free()
 			node.text = var2str(results[i])
-			#_setColorToResult(node,i)
+			_setColorToResult(node, i, failureValues, successValues, results)
 			continue
 		node.text = var2str(results[i]) # <----
-		#_setColorToResult(node,i)
+		_setColorToResult(node, i, failureValues, successValues, results)
 		add_child(node)
 		

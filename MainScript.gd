@@ -70,16 +70,6 @@ func _setRollingTextToGrid():
 	var gridText = Label.new()
 	gridText.text = "Rolling..."
 	resultGrid.add_child(gridText)
-
-func _setColorToResult(node: Label, i: int):
-	if(node.has_color_override("font_color")):
-		node.add_color_override("font_color", Color(1,1,1))
-	if(failureValues.has(results[i])):
-		node.add_color_override("font_color", Color(1,0,0))
-		return
-	if(successValues.has(results[i])):
-		node.add_color_override("font_color", Color(0,1,0))
-		return
 	
 
 func _on_Roll_pressed():
@@ -113,7 +103,7 @@ func _on_Roll_pressed():
 #		node.text = var2str(results[i]) # <----
 #		_setColorToResult(node,i)
 #		resultGrid.add_child(node)
-	resultGrid.temp(results)
+	resultGrid.temp(results, failureValues, successValues)
 	_checkFailures()
 	_checkSuccess()
 	failureResultValue.text = var2str(totalFailures)
@@ -248,5 +238,5 @@ func _on_SortButton_pressed():
 	results.sort_custom(sorter,"customSorter")
 	for i in children.size():
 		children[i].text = var2str(results[i])
-		_setColorToResult(children[i], i)
+		resultGrid._setColorToResult(children[i], i, failureValues, successValues, results)
 	pass
