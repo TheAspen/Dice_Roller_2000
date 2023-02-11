@@ -22,14 +22,20 @@ func temp(results: PoolIntArray, failureValues: PoolIntArray, successValues: Poo
 			#defaultText.replace_by(node)
 			defaultText.queue_free()
 			#node.text = var2str(results[i])
-			_setColorToResult(node, i, failureValues, successValues, results)
+			#_setColorToResult(node, i, failureValues, successValues, results)
 			node.set_script(labelScript)
-			node._initLabel(10,results[i], 1)
+			node._initLabel(10,results[i], 1, i)
 			add_child(node)
 			continue
 		#node.text = var2str(results[i]) # <----
-		_setColorToResult(node, i, failureValues, successValues, results)
+		# _setColorToResult(node, i, failureValues, successValues, results)
 		node.set_script(labelScript)
-		node._initLabel(10,results[i], 1)
+		node._initLabel(10,results[i], 1, i)
 		add_child(node)
+	_showLabel(1)
 pass
+
+func _showLabel(index: int):
+	if(get_child(index)):
+		get_child(index)._start()
+	pass
