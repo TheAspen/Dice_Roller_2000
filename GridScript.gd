@@ -14,25 +14,13 @@ func _setColorToResult(node: Label, i: int, failureValues: PoolIntArray, success
 		return
 
 # Core function, called from MainScript
-func temp(results: PoolIntArray, failureValues: PoolIntArray, successValues: PoolIntArray): 
+func _createLabels(results: PoolIntArray, failureValues: PoolIntArray, successValues: PoolIntArray): 
 	for i in range(results.size()):
 		var node = Label.new()
-		if(i == 0):
-			var defaultText = get_child(0)
-			#defaultText.replace_by(node)
-			defaultText.queue_free()
-			#node.text = var2str(results[i])
-			#_setColorToResult(node, i, failureValues, successValues, results)
-			node.set_script(labelScript)
-			node._initLabel(10,results[i], 1, i)
-			add_child(node)
-			continue
-		#node.text = var2str(results[i]) # <----
-		# _setColorToResult(node, i, failureValues, successValues, results)
 		node.set_script(labelScript)
 		node._initLabel(10,results[i], 1, i)
 		add_child(node)
-	_showLabel(1)
+	_showLabel(0)
 pass
 
 func _showLabel(index: int):

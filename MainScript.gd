@@ -76,7 +76,7 @@ func _on_Roll_pressed():
 	if(allowRoll == false):
 		return
 	_clearAll()
-	_setRollingTextToGrid()
+	#_setRollingTextToGrid()
 	yield(get_tree().create_timer(0.5), "timeout")
 	var dice = int(diceSpinBox.value)
 	var amount = int(amountSpinBox.value)
@@ -103,7 +103,7 @@ func _on_Roll_pressed():
 #		node.text = var2str(results[i]) # <----
 #		_setColorToResult(node,i)
 #		resultGrid.add_child(node)
-	resultGrid.temp(results, failureValues, successValues)
+	resultGrid._createLabels(results, failureValues, successValues)
 	_checkFailures()
 	_checkSuccess()
 	failureResultValue.text = var2str(totalFailures)
