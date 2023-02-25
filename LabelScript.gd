@@ -26,6 +26,8 @@ func _setValues():
 	text = var2str(realValue)
 	valueSet = true
 	zero = 0
+	# Launch the second label
+	# _showLabel handles situation when index goes over child count
 	get_parent()._showLabel(index + 1)
 
 # Do the "animation"

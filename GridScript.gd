@@ -20,10 +20,13 @@ func _createLabels(results: PoolIntArray, failureValues: PoolIntArray, successVa
 		node.set_script(labelScript)
 		node._initLabel(10,results[i], 1, i)
 		add_child(node)
+	# Start showing labels
 	_showLabel(0)
 pass
 
 func _showLabel(index: int):
-	if(get_child(index)):
+	# Index is 0 when child_cout is 1 (Indexing starts from 0)
+	# Thats why we need to check index is smaller than get_child_count
+	if(index < get_child_count() && get_child(index)):
 		get_child(index)._start()
 	pass
