@@ -7,6 +7,21 @@ var zero = 0
 var valueSet = true
 var generator = RandomNumberGenerator.new()
 var index = 0
+var failures = []
+var successes = []
+var allResults = []
+
+
+# Set color to the result
+func _setColorToResult():
+	if(has_color_override("font_color")):
+		add_color_override("font_color", Color(1,1,1))
+	if(failures.has(realValue)):
+		add_color_override("font_color", Color(1,0,0))
+		return
+	if(successes.has(realValue)):
+		add_color_override("font_color", Color(0,1,0))
+		return
 
 # Randomize
 func _ready():
@@ -15,17 +30,21 @@ func _ready():
 
 # Call this from Grid
 # Initialize label
-func _initLabel(pMaxValue: int, pRealValue: int, pTimer: int, pIndex: int):
+func _initLabel(pMaxValue: int, pRealValue: int, pTimer: int, pIndex: int, pFailures, pSuccesses, pAllResults):
 	maxValue = pMaxValue
 	realValue = pRealValue
 	timer = pTimer
 	index = pIndex
+	failures = pFailures
+	successes = pSuccesses
+	allResults = pAllResults
 
 # Set true values
 func _setValues():
 	text = var2str(realValue)
 	valueSet = true
 	zero = 0
+	_setColorToResult()
 	# Launch the second label
 	# _showLabel handles situation when index goes over child count
 	get_parent()._showLabel(index + 1)
