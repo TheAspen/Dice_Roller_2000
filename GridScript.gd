@@ -1,6 +1,7 @@
 extends GridContainer
 
 var labelScript = preload("res://LabelScript.gd")
+var animations = false
 
 # Set color to the result
 # Not in use!
@@ -15,11 +16,12 @@ func _setColorToResult(node: Label, i: int, failureValues: PoolIntArray, success
 		return
 
 # Core function, called from MainScript
-func _createLabels(results: PoolIntArray, failureValues: PoolIntArray, successValues: PoolIntArray): 
+func _createLabels(maxValue: int, waitTime: float, results: PoolIntArray, failureValues: PoolIntArray, successValues: PoolIntArray, showAnimations: bool): 
+	animations = showAnimations
 	for i in range(results.size()):
 		var node = Label.new()
 		node.set_script(labelScript)
-		node._initLabel(10,results[i], 1, i, failureValues, successValues, results)
+		node._initLabel(maxValue,results[i], waitTime, i, failureValues, successValues, results)
 		add_child(node)
 	# Start showing labels
 	_showLabel(0)

@@ -9,6 +9,8 @@ var totalFailures = 0
 var totalSuccess = 0
 var settingsOpened = false
 var sorter = null
+var resultTotal = 0
+var showAnimations = true
 
 onready var resultGrid = $App/VBoxContainer/RolledDicesArray/ScrollContainer/GridContainer
 onready var resultLabel = $App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/Container/Results/Result
@@ -65,6 +67,7 @@ func _clearAll():
 	sortButton.disabled = true
 	sortButton.mouse_default_cursor_shape = Control.CURSOR_ARROW
 	sortButton.focus_mode = Control.FOCUS_NONE
+	resultTotal = 0
 	
 func _setRollingTextToGrid():
 	var gridText = Label.new()
@@ -72,42 +75,39 @@ func _setRollingTextToGrid():
 	resultGrid.add_child(gridText)
 	
 
+func _hideResultLabels(): 
+	failureResultValue.text = "???"
+	successResultValue.text = "???"
+	resultLabel.text = "???"
+
+func _showResultLabels():
+	failureResultValue.text = var2str(totalFailures)
+	successResultValue.text = var2str(totalSuccess)
+	resultLabel.text = var2str(resultTotal)
+
 func _on_Roll_pressed():
 	if(allowRoll == false):
 		return
+	# Clear everything
 	_clearAll()
 	#_setRollingTextToGrid()
+	# Wait a bit
 	yield(get_tree().create_timer(0.5), "timeout")
 	var dice = int(diceSpinBox.value)
 	var amount = int(amountSpinBox.value)
-	var result = _rolldice(dice, amount)
-	resultLabel.text = var2str(result)
-
-#	for i in range(results.size()):
-#		var node = Label.new()
-#		# Old implementation for result table
-#		# if(i == 0):
-#		# 	$RolledDicesArray/RollsTable.text = var2str(results[i])
-#		# 	continue
-#		# $RolledDicesArray/RollsTable.text = $RolledDicesArray/RollsTable.text + ", " + var2str(results[i])
-#
-#		# Replace the rolling text with the first result value
-#		# Prevent flicker effect
-#		if(i == 0):
-#			var defaultText = resultGrid.get_child(0)
-#			defaultText.replace_by(node)
-#			defaultText.queue_free()
-#			node.text = var2str(results[i])
-#			_setColorToResult(node,i)
-#			continue
-#		node.text = var2str(results[i]) # <----
-#		_setColorToResult(node,i)
-#		resultGrid.add_child(node)
-	resultGrid._createLabels(results, failureValues, successValues)
+	# Hide total labels
+	_hideResultLabels()
+	# Roll
+	resultTotal = _rolldice(dice, amount)
+	# Start createing result labels
+	resultGrid._createLabels(dice, 1, results, failureValues, successValues, showAnimations)
+	# Check failure and success values (Only for total sums)
 	_checkFailures()
 	_checkSuccess()
-	failureResultValue.text = var2str(totalFailures)
-	successResultValue.text = var2str(totalSuccess)
+	# If animations are set to false, show total results instantly
+	if(!showAnimations):
+		_showResultLabels()
+	# Set some general values
 	allowRoll = true
 	sortButton.disabled = false
 	sortButton.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
