@@ -12,6 +12,9 @@ var successes = []
 var allResults = []
 
 
+# Testing
+var animTimer = null
+
 # Set color to the result
 func _setColorToResult():
 	if(has_color_override("font_color")):
@@ -23,10 +26,28 @@ func _setColorToResult():
 		add_color_override("font_color", Color(0,1,0))
 		return
 
-# Randomize
+
 func _ready():
 	self.hide()
+	# Set min size to 20, prevent "shaking" effect.
+	self.rect_min_size = Vector2(20,0)
+	# Randomize
 	generator.randomize()
+	animTimer = Timer.new()
+	animTimer.wait_time = 0.07
+	animTimer.one_shot = true
+	add_child(animTimer)
+
+func _starTimer():
+	#print("stopped: ", animTimer.is_stopped())
+	if(animTimer.is_stopped()):
+		animTimer.start()
+		_setNewRandomValue()
+		print("animstopped")
+
+func _setNewRandomValue():
+	print("setname")
+	text = var2str(generator.randi_range(0, maxValue))
 
 # Call this from Grid
 # Initialize label
@@ -42,8 +63,13 @@ func _initLabel(pMaxValue: int, pRealValue: int, pTimer: int, pIndex: int, pFail
 # Set true values
 func _setValues():
 	text = var2str(realValue)
+	# Set min size to 10
+	if(allResults.size() > 1):
+		self.rect_min_size = Vector2(10,0)
+	# Value is set, do not show "animations" anymore.
 	valueSet = true
 	zero = 0
+	# Set color
 	_setColorToResult()
 	# Launch the second label
 	# _showLabel handles situation when index goes over child count
@@ -53,11 +79,15 @@ func _setValues():
 func _process(delta):
 	if(valueSet):
 		return
+	if(animTimer.is_stopped()):
+		_starTimer()
 	if(zero < timer):
-		text = var2str(generator.randi_range(0, maxValue))
+		# text = var2str(generator.randi_range(0, maxValue))
 		zero = zero + 1 * delta
 		return
 	_setValues()
+	
+	#print(animTimer.time_left)
 	pass
 
 
