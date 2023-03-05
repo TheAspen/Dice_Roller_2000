@@ -39,14 +39,11 @@ func _ready():
 	add_child(animTimer)
 
 func _starTimer():
-	#print("stopped: ", animTimer.is_stopped())
 	if(animTimer.is_stopped()):
 		animTimer.start()
 		_setNewRandomValue()
-		print("animstopped")
 
 func _setNewRandomValue():
-	print("setname")
 	text = var2str(generator.randi_range(0, maxValue))
 
 # Call this from Grid
@@ -82,15 +79,15 @@ func _process(delta):
 	if(animTimer.is_stopped()):
 		_starTimer()
 	if(zero < timer):
-		# text = var2str(generator.randi_range(0, maxValue))
 		zero = zero + 1 * delta
 		return
 	_setValues()
-	
-	#print(animTimer.time_left)
 	pass
 
 
-func _start():
+func _start(doAnimation: bool):
 	self.show()
-	valueSet = false
+	if(doAnimation):
+		valueSet = false
+	else:
+		_setValues()

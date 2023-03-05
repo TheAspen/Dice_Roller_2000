@@ -10,7 +10,7 @@ var totalSuccess = 0
 var settingsOpened = false
 var sorter = null
 var resultTotal = 0
-var showAnimations = true
+var showAnimations = false
 
 onready var resultGrid = $App/VBoxContainer/RolledDicesArray/ScrollContainer/GridContainer
 onready var resultLabel = $App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/Container/Results/Result
@@ -22,6 +22,7 @@ onready var amountSpinBox =  $App/VBoxContainer/HBoxContainer/VBoxContainer/Cent
 onready var failureValuesArray = $App/OptionalSettingsMain/OptionalSettings/FailureSettings/HBoxContainer2/FailureValuesArray
 onready var successValuesArray = $App/OptionalSettingsMain/OptionalSettings/SuccessSettings/HBoxContainer/SuccessValuesArray
 onready var sortButton = $App/VBoxContainer/RolledDicesArray/HBoxContainer/SortButton
+onready var animTime = $App/VBoxContainer/RolledDicesArray/AnimationSettings/AnimTime
 
 class CustomSorter:
 	static func customSorter(a, b):
@@ -100,7 +101,7 @@ func _on_Roll_pressed():
 	# Roll
 	resultTotal = _rolldice(dice, amount)
 	# Start createing result labels
-	resultGrid._createLabels(dice, 1, results, failureValues, successValues, showAnimations)
+	resultGrid._createLabels(dice, animTime.value, results, failureValues, successValues, showAnimations)
 	# Check failure and success values (Only for total sums)
 	_checkFailures()
 	_checkSuccess()
@@ -232,11 +233,13 @@ func _on_OpenSettings_pressed():
 
 func _on_SortButton_pressed():
 	var children = resultGrid.get_children()
-	# var array = []
-	# for i in children.size():
-	# 	array.push_back(children[i].text)
 	results.sort_custom(sorter,"customSorter")
 	for i in children.size():
 		children[i].text = var2str(results[i])
 		resultGrid._setColorToResult(children[i], i, failureValues, successValues, results)
+	pass
+
+
+func _on_AnimToggle_toggled(button_pressed):
+	showAnimations = button_pressed
 	pass

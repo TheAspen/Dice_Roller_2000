@@ -31,5 +31,5 @@ func _showLabel(index: int):
 	# Index is 0 when child_cout is 1 (Indexing starts from 0)
 	# Thats why we need to check index is smaller than get_child_count
 	if(index < get_child_count() && get_child(index)):
-		get_child(index)._start()
+		get_child(index)._start(animations)
 	pass
