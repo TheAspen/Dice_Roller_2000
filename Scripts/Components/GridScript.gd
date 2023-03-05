@@ -1,6 +1,6 @@
 extends GridContainer
 
-var labelScript = preload("res://Scripts/Components/LabelScript.gd")
+var labelScript = preload("res://scripts/Components/LabelScript.gd")
 var animations = false
 
 # Set color to the result

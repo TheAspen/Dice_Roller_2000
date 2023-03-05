@@ -24,6 +24,8 @@ onready var successValuesArray = $App/OptionalSettingsMain/OptionalSettings/Succ
 onready var sortButton = $App/VBoxContainer/RolledDicesArray/HBoxContainer/SortButton
 onready var animTime = $App/VBoxContainer/RolledDicesArray/AnimationSettings/AnimTime
 
+var mainTheme = preload("res://assets/themes/main_theme.tres")
+
 class CustomSorter:
 	static func customSorter(a, b):
 			if(a > b):
@@ -243,3 +245,13 @@ func _on_SortButton_pressed():
 func _on_AnimToggle_toggled(button_pressed):
 	showAnimations = button_pressed
 	pass
+
+
+func _on_TestTheme_toggled(button_pressed):
+	if(button_pressed):
+		theme = null
+		VisualServer.set_default_clear_color("#4d4d4d")
+	else:
+		theme = mainTheme
+		VisualServer.set_default_clear_color(Color.white)
+	pass 
