@@ -32,4 +32,7 @@ func _showLabel(index: int):
 	# Thats why we need to check index is smaller than get_child_count
 	if(index < get_child_count() && get_child(index)):
 		get_child(index)._start(animations)
+	else:
+		# The last label is shown, show the total values from the main script
+		get_tree().get_root().get_node("Main")._showResultLabels()
 	pass

@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=13 format=2]
+[gd_resource type="Theme" load_steps=19 format=2]
 
 [ext_resource path="res://assets/fonts/FredokaOne-Regular.ttf" type="DynamicFontData" id=1]
 
@@ -16,7 +16,7 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
 [sub_resource type="StyleBoxFlat" id=4]
-bg_color = Color( 1, 1, 1, 1 )
+bg_color = Color( 0.819608, 0.819608, 0.819608, 1 )
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -59,6 +59,7 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
 [sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 1, 1, 1, 1 )
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -69,6 +70,16 @@ corner_radius_top_left = 2
 corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxTexture" id=16]
+
+[sub_resource type="StyleBoxEmpty" id=14]
+
+[sub_resource type="StyleBoxEmpty" id=15]
+
+[sub_resource type="StyleBoxEmpty" id=13]
+
+[sub_resource type="StyleBoxEmpty" id=17]
 
 [sub_resource type="StyleBoxEmpty" id=6]
 
@@ -98,10 +109,10 @@ bg_color = Color( 1, 1, 1, 1 )
 
 [sub_resource type="StyleBoxFlat" id=11]
 
+[sub_resource type="ImageTexture" id=18]
+
 [sub_resource type="DynamicFont" id=8]
-size = 13
 use_filter = true
-extra_spacing_space = 1
 font_data = ExtResource( 1 )
 
 [resource]
@@ -116,6 +127,11 @@ Button/styles/focus = SubResource( 4 )
 Button/styles/hover = SubResource( 1 )
 Button/styles/normal = SubResource( 7 )
 Button/styles/pressed = SubResource( 5 )
+CheckButton/styles/focus = SubResource( 16 )
+CheckButton/styles/hover = SubResource( 14 )
+CheckButton/styles/hover_pressed = SubResource( 15 )
+CheckButton/styles/normal = SubResource( 13 )
+CheckButton/styles/pressed = SubResource( 17 )
 Label/colors/font_color = Color( 0, 0, 0, 1 )
 Label/styles/normal = SubResource( 6 )
 LineEdit/colors/cursor_color = Color( 0, 0, 0, 1 )
@@ -124,3 +140,4 @@ LineEdit/styles/focus = SubResource( 9 )
 LineEdit/styles/normal = SubResource( 12 )
 LineEdit/styles/read_only = SubResource( 10 )
 Panel/styles/panel = SubResource( 11 )
+SpinBox/icons/updown = SubResource( 18 )

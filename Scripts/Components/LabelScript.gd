@@ -10,10 +10,9 @@ var index = 0
 var failures = []
 var successes = []
 var allResults = []
-
-
-# Testing
 var animTimer = null
+
+
 
 # Set color to the result
 func _setColorToResult():
@@ -84,7 +83,7 @@ func _process(delta):
 	_setValues()
 	pass
 
-
+# Start label animation or show label
 func _start(doAnimation: bool):
 	self.show()
 	if(doAnimation):

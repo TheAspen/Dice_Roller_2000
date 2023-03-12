@@ -23,8 +23,10 @@ onready var failureValuesArray = $App/OptionalSettingsMain/OptionalSettings/Fail
 onready var successValuesArray = $App/OptionalSettingsMain/OptionalSettings/SuccessSettings/HBoxContainer/SuccessValuesArray
 onready var sortButton = $App/VBoxContainer/RolledDicesArray/HBoxContainer/SortButton
 onready var animTime = $App/VBoxContainer/RolledDicesArray/AnimationSettings/AnimTime
+onready var themeSwitch = $App/ThemeSwitch
 
 var mainTheme = preload("res://assets/themes/main_theme.tres")
+var defaultTheme = preload("res://assets/themes/default_theme.tres")
 
 class CustomSorter:
 	static func customSorter(a, b):
@@ -87,6 +89,8 @@ func _showResultLabels():
 	failureResultValue.text = var2str(totalFailures)
 	successResultValue.text = var2str(totalSuccess)
 	resultLabel.text = var2str(resultTotal)
+	# Enable sort button
+	sortButton.disabled = false
 
 func _on_Roll_pressed():
 	if(allowRoll == false):
@@ -110,9 +114,10 @@ func _on_Roll_pressed():
 	# If animations are set to false, show total results instantly
 	if(!showAnimations):
 		_showResultLabels()
+	if(showAnimations):
+		sortButton.disabled = true
 	# Set some general values
 	allowRoll = true
-	sortButton.disabled = false
 	sortButton.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 	sortButton.focus_mode = Control.FOCUS_ALL
 	pass
@@ -247,11 +252,11 @@ func _on_AnimToggle_toggled(button_pressed):
 	pass
 
 
-func _on_TestTheme_toggled(button_pressed):
+func _on_ThemeSwitch_toggled(button_pressed):
 	if(button_pressed):
-		theme = null
-		VisualServer.set_default_clear_color("#4d4d4d")
-	else:
 		theme = mainTheme
 		VisualServer.set_default_clear_color(Color.white)
-	pass 
+	else:
+		theme = defaultTheme
+		VisualServer.set_default_clear_color("#4d4d4d")
+	pass # Replace with function body.
