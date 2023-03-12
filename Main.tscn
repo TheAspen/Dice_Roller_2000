@@ -1,13 +1,13 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://scripts/MainScript.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/MainScript.gd" type="Script" id=1]
 [ext_resource path="res://assets/addButton_pressed.png" type="Texture" id=2]
 [ext_resource path="res://assets/deleteButton_pressed.png" type="Texture" id=3]
 [ext_resource path="res://assets/addButton.png" type="Texture" id=4]
 [ext_resource path="res://assets/deleteButton.png" type="Texture" id=5]
 [ext_resource path="res://assets/addButton_normal.png" type="Texture" id=6]
 [ext_resource path="res://assets/deleteButton_normal.png" type="Texture" id=7]
-[ext_resource path="res://scripts/Components/GridScript.gd" type="Script" id=8]
+[ext_resource path="res://Scripts/Components/GridScript.gd" type="Script" id=8]
 [ext_resource path="res://assets/fonts/FredokaOne-Regular.ttf" type="DynamicFontData" id=9]
 [ext_resource path="res://assets/themes/main_theme.tres" type="Theme" id=10]
 
@@ -307,6 +307,44 @@ margin_bottom = 282.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="QSMargin" type="MarginContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer"]
+margin_left = 92.0
+margin_top = 21.0
+margin_right = 689.0
+margin_bottom = 226.0
+custom_constants/margin_left = 450
+custom_constants/margin_bottom = 33
+
+[node name="QuickSelection" type="VBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/QSMargin"]
+margin_left = 450.0
+margin_right = 597.0
+margin_bottom = 172.0
+alignment = 1
+
+[node name="Header" type="HBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/QSMargin/QuickSelection"]
+margin_right = 147.0
+margin_bottom = 24.0
+
+[node name="Label" type="Label" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/QSMargin/QuickSelection/Header"]
+margin_top = 2.0
+margin_right = 95.0
+margin_bottom = 22.0
+text = "Quick Select"
+
+[node name="OpenButton" type="Button" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/QSMargin/QuickSelection/Header"]
+margin_left = 99.0
+margin_right = 147.0
+margin_bottom = 24.0
+text = "Open"
+
+[node name="DiceList" type="ItemList" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/QSMargin/QuickSelection"]
+margin_top = 28.0
+margin_right = 147.0
+margin_bottom = 172.0
+rect_min_size = Vector2( 80, 0 )
+items = [ "D4", null, false, "D6", null, false, "D8", null, false, "D10", null, false, "D12", null, false, "D20", null, false ]
+auto_height = true
 
 [node name="Container" type="VBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer"]
 margin_left = 281.0

@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=19 format=2]
+[gd_resource type="Theme" load_steps=20 format=2]
 
 [ext_resource path="res://assets/fonts/FredokaOne-Regular.ttf" type="DynamicFontData" id=1]
 
@@ -81,6 +81,8 @@ corner_radius_bottom_left = 2
 
 [sub_resource type="StyleBoxEmpty" id=17]
 
+[sub_resource type="StyleBoxFlat" id=19]
+
 [sub_resource type="StyleBoxEmpty" id=6]
 
 [sub_resource type="StyleBoxFlat" id=9]
@@ -132,6 +134,7 @@ CheckButton/styles/hover = SubResource( 14 )
 CheckButton/styles/hover_pressed = SubResource( 15 )
 CheckButton/styles/normal = SubResource( 13 )
 CheckButton/styles/pressed = SubResource( 17 )
+ItemList/styles/bg = SubResource( 19 )
 Label/colors/font_color = Color( 0, 0, 0, 1 )
 Label/styles/normal = SubResource( 6 )
 LineEdit/colors/cursor_color = Color( 0, 0, 0, 1 )
