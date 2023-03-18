@@ -13,17 +13,19 @@ var resultTotal = 0
 var showAnimations = false
 
 onready var resultGrid = $App/VBoxContainer/RolledDicesArray/ScrollContainer/GridContainer
-onready var resultLabel = $App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/Container/Results/Result
+onready var resultLabel = $App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/Container/Results/Result
 onready var rollsTable = $App/VBoxContainer/RolledDicesArray/RollsTable
 onready var failureResultValue = $App/OptionalSettingsMain/OptionalSettings/OptionalResultHBox/FailureVBox/FailureResultValue
 onready var successResultValue = $App/OptionalSettingsMain/OptionalSettings/OptionalResultHBox/SuccessVBox/SuccessResultValue
-onready var diceSpinBox = $App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/Container/HBoxContainer/Options/DiceSettings/Dice
-onready var amountSpinBox =  $App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/Container/HBoxContainer/Options/AmountSettings/Amount
+onready var diceSpinBox = $App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/Container/HBoxContainer/Options/DiceSettings/Dice
+onready var amountSpinBox =  $App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/Container/HBoxContainer/Options/AmountSettings/Amount
 onready var failureValuesArray = $App/OptionalSettingsMain/OptionalSettings/FailureSettings/HBoxContainer2/FailureValuesArray
 onready var successValuesArray = $App/OptionalSettingsMain/OptionalSettings/SuccessSettings/HBoxContainer/SuccessValuesArray
 onready var sortButton = $App/VBoxContainer/RolledDicesArray/HBoxContainer/SortButton
 onready var animTime = $App/VBoxContainer/RolledDicesArray/AnimationSettings/AnimTime
 onready var themeSwitch = $App/ThemeSwitch
+onready var diceList = $App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/QuickSelection/DiceList
+onready var quickSelectionHeader = $App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/QuickSelection/Header
 
 var mainTheme = preload("res://assets/themes/main_theme.tres")
 var defaultTheme = preload("res://assets/themes/default_theme.tres")
@@ -237,7 +239,7 @@ func _on_OpenSettings_pressed():
 	$App/OptionalSettingsMain/HBoxContainer/OpenSettings.text = "Close"
 	pass 
 
-
+# Sort rolled values
 func _on_SortButton_pressed():
 	var children = resultGrid.get_children()
 	results.sort_custom(sorter,"customSorter")
@@ -246,12 +248,12 @@ func _on_SortButton_pressed():
 		resultGrid._setColorToResult(children[i], i, failureValues, successValues, results)
 	pass
 
-
+# Enable rolling animations
 func _on_AnimToggle_toggled(button_pressed):
 	showAnimations = button_pressed
 	pass
 
-
+# Theme switch
 func _on_ThemeSwitch_toggled(button_pressed):
 	if(button_pressed):
 		theme = mainTheme
@@ -259,4 +261,32 @@ func _on_ThemeSwitch_toggled(button_pressed):
 	else:
 		theme = defaultTheme
 		VisualServer.set_default_clear_color("#4d4d4d")
-	pass # Replace with function body.
+	pass
+
+# Open and close quick selection list
+func _on_QuickSelectOpenButton_pressed():
+	if(diceList.is_visible_in_tree()):
+		diceList.hide()
+	else:
+		diceList.show()
+	pass
+
+# Quick selection list
+func _on_DiceList_item_selected(index):
+	var item: String = diceList.get_item_text(index)
+	match(item):
+		"D4":
+			diceSpinBox.value = 4
+		"D6":
+			diceSpinBox.value = 6
+		"D8":
+			diceSpinBox.value = 8
+		"D10":
+			diceSpinBox.value = 10
+		"D12":
+			diceSpinBox.value = 12
+		"D20":
+			diceSpinBox.value = 20
+	yield(get_tree().create_timer(0.1), "timeout")
+	diceList.unselect(index)
+	pass 

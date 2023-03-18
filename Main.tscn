@@ -308,56 +308,29 @@ mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="QSMargin" type="MarginContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer"]
-margin_left = 92.0
-margin_top = 21.0
-margin_right = 689.0
-margin_bottom = 226.0
-custom_constants/margin_left = 450
-custom_constants/margin_bottom = 33
-
-[node name="QuickSelection" type="VBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/QSMargin"]
-margin_left = 450.0
-margin_right = 597.0
-margin_bottom = 172.0
-alignment = 1
-
-[node name="Header" type="HBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/QSMargin/QuickSelection"]
-margin_right = 147.0
-margin_bottom = 24.0
-
-[node name="Label" type="Label" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/QSMargin/QuickSelection/Header"]
-margin_top = 2.0
-margin_right = 95.0
-margin_bottom = 22.0
-text = "Quick Select"
-
-[node name="OpenButton" type="Button" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/QSMargin/QuickSelection/Header"]
-margin_left = 99.0
-margin_right = 147.0
-margin_bottom = 24.0
-text = "Open"
-
-[node name="DiceList" type="ItemList" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/QSMargin/QuickSelection"]
-margin_top = 28.0
-margin_right = 147.0
-margin_bottom = 172.0
-rect_min_size = Vector2( 80, 0 )
-items = [ "D4", null, false, "D6", null, false, "D8", null, false, "D10", null, false, "D12", null, false, "D20", null, false ]
-auto_height = true
-
-[node name="Container" type="VBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer"]
-margin_left = 281.0
+[node name="CenterMargin" type="MarginContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer"]
+margin_left = 98.0
 margin_top = 24.0
-margin_right = 501.0
+margin_right = 683.0
 margin_bottom = 223.0
+custom_constants/margin_left = 182
+
+[node name="CenterHBox" type="HBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin"]
+margin_left = 182.0
+margin_right = 585.0
+margin_bottom = 199.0
+custom_constants/separation = 30
+
+[node name="Container" type="VBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox"]
+margin_right = 220.0
+margin_bottom = 199.0
 custom_constants/separation = 25
 
-[node name="HBoxContainer" type="HBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/Container"]
+[node name="HBoxContainer" type="HBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/Container"]
 margin_right = 220.0
 margin_bottom = 64.0
 
-[node name="Options" type="HBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/Container/HBoxContainer"]
+[node name="Options" type="HBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/Container/HBoxContainer"]
 margin_right = 220.0
 margin_bottom = 64.0
 size_flags_horizontal = 3
@@ -365,15 +338,15 @@ size_flags_vertical = 3
 custom_constants/separation = 20
 alignment = 1
 
-[node name="DiceSettings" type="VBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/Container/HBoxContainer/Options"]
+[node name="DiceSettings" type="VBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/Container/HBoxContainer/Options"]
 margin_right = 100.0
 margin_bottom = 64.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/Container/HBoxContainer/Options/DiceSettings"]
+[node name="HBoxContainer" type="HBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/Container/HBoxContainer/Options/DiceSettings"]
 margin_right = 100.0
 margin_bottom = 20.0
 
-[node name="DiceText" type="Label" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/Container/HBoxContainer/Options/DiceSettings/HBoxContainer"]
+[node name="DiceText" type="Label" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/Container/HBoxContainer/Options/DiceSettings/HBoxContainer"]
 margin_right = 78.0
 margin_bottom = 20.0
 hint_tooltip = "How many sides the dice have
@@ -382,7 +355,7 @@ mouse_filter = 0
 text = "Dice faces"
 valign = 1
 
-[node name="Dice" type="SpinBox" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/Container/HBoxContainer/Options/DiceSettings"]
+[node name="Dice" type="SpinBox" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/Container/HBoxContainer/Options/DiceSettings"]
 margin_top = 24.0
 margin_right = 100.0
 margin_bottom = 64.0
@@ -394,12 +367,12 @@ value = 2.0
 rounded = true
 align = 1
 
-[node name="AmountSettings" type="VBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/Container/HBoxContainer/Options"]
+[node name="AmountSettings" type="VBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/Container/HBoxContainer/Options"]
 margin_left = 120.0
 margin_right = 220.0
 margin_bottom = 64.0
 
-[node name="AmountText" type="Label" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/Container/HBoxContainer/Options/AmountSettings"]
+[node name="AmountText" type="Label" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/Container/HBoxContainer/Options/AmountSettings"]
 margin_right = 100.0
 margin_bottom = 20.0
 hint_tooltip = "How many dices will be rolled"
@@ -407,7 +380,7 @@ mouse_filter = 0
 text = "Dice amount"
 valign = 1
 
-[node name="Amount" type="SpinBox" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/Container/HBoxContainer/Options/AmountSettings"]
+[node name="Amount" type="SpinBox" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/Container/HBoxContainer/Options/AmountSettings"]
 margin_top = 24.0
 margin_right = 100.0
 margin_bottom = 64.0
@@ -419,7 +392,7 @@ value = 1.0
 rounded = true
 align = 1
 
-[node name="Roll" type="Button" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/Container"]
+[node name="Roll" type="Button" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/Container"]
 margin_top = 89.0
 margin_right = 220.0
 margin_bottom = 129.0
@@ -428,7 +401,7 @@ mouse_default_cursor_shape = 2
 size_flags_horizontal = 5
 text = "Roll"
 
-[node name="Results" type="VBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/Container"]
+[node name="Results" type="VBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/Container"]
 margin_top = 154.0
 margin_right = 220.0
 margin_bottom = 199.0
@@ -437,7 +410,7 @@ size_flags_vertical = 3
 custom_constants/separation = 0
 alignment = 1
 
-[node name="ResultText" type="Label" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/Container/Results"]
+[node name="ResultText" type="Label" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/Container/Results"]
 margin_right = 220.0
 margin_bottom = 20.0
 hint_tooltip = "All rolled dices count together"
@@ -446,7 +419,7 @@ text = "Total"
 align = 1
 valign = 1
 
-[node name="Result" type="Label" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/Container/Results"]
+[node name="Result" type="Label" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/Container/Results"]
 margin_left = 97.0
 margin_top = 20.0
 margin_right = 122.0
@@ -456,6 +429,37 @@ size_flags_horizontal = 4
 text = "..."
 align = 1
 valign = 1
+
+[node name="QuickSelection" type="VBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox"]
+margin_left = 250.0
+margin_right = 403.0
+margin_bottom = 199.0
+
+[node name="Header" type="HBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/QuickSelection"]
+margin_right = 153.0
+margin_bottom = 24.0
+custom_constants/separation = 10
+
+[node name="Label" type="Label" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/QuickSelection/Header"]
+margin_top = 2.0
+margin_right = 95.0
+margin_bottom = 22.0
+text = "Quick Select"
+
+[node name="OpenButton" type="Button" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/QuickSelection/Header"]
+margin_left = 105.0
+margin_right = 153.0
+margin_bottom = 24.0
+text = "Open"
+
+[node name="DiceList" type="ItemList" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/QuickSelection"]
+margin_top = 28.0
+margin_right = 153.0
+margin_bottom = 199.0
+rect_min_size = Vector2( 80, 0 )
+size_flags_vertical = 3
+items = [ "D4", null, false, "D6", null, false, "D8", null, false, "D10", null, false, "D12", null, false, "D20", null, false ]
+allow_reselect = true
 
 [node name="RolledDicesArray" type="VBoxContainer" parent="App/VBoxContainer"]
 margin_top = 286.0
@@ -564,6 +568,8 @@ text = "ver. 1.1.0"
 [connection signal="pressed" from="App/OptionalSettingsMain/OptionalSettings/SuccessSettings/HBoxContainer2/DecreaseButtonSuccess" to="." method="_on_DecreaseButtonSuccess_pressed"]
 [connection signal="pressed" from="App/OptionalSettingsMain/OptionalSettings/SuccessSettings/HBoxContainer2/AddButtonSuccess" to="." method="_on_AddButtonSuccess_pressed"]
 [connection signal="pressed" from="App/OptionalSettingsMain/OptionalSettings/ClearOptionalValues" to="." method="_on_ClearOptionalValues_pressed"]
-[connection signal="pressed" from="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/Container/Roll" to="." method="_on_Roll_pressed"]
+[connection signal="pressed" from="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/Container/Roll" to="." method="_on_Roll_pressed"]
+[connection signal="pressed" from="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/QuickSelection/Header/OpenButton" to="." method="_on_QuickSelectOpenButton_pressed"]
+[connection signal="item_selected" from="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/QuickSelection/DiceList" to="." method="_on_DiceList_item_selected"]
 [connection signal="toggled" from="App/VBoxContainer/RolledDicesArray/AnimationSettings/AnimToggle" to="." method="_on_AnimToggle_toggled"]
 [connection signal="pressed" from="App/VBoxContainer/RolledDicesArray/HBoxContainer/SortButton" to="." method="_on_SortButton_pressed"]
