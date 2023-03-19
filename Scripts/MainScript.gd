@@ -26,6 +26,11 @@ onready var animTime = $App/VBoxContainer/RolledDicesArray/AnimationSettings/Ani
 onready var themeSwitch = $App/ThemeSwitch
 onready var diceList = $App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/QuickSelection/DiceList
 onready var quickSelectionHeader = $App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/QuickSelection/Header
+onready var decreaseButtonFailure = $App/OptionalSettingsMain/OptionalSettings/FailureSettings/HBoxContainer/DecreaseButtonFailure
+onready var addButtonFailure = $App/OptionalSettingsMain/OptionalSettings/FailureSettings/HBoxContainer/AddButtonFailure
+onready var decreaseButtonSuccess = $App/OptionalSettingsMain/OptionalSettings/SuccessSettings/HBoxContainer2/DecreaseButtonSuccess
+onready var addButtonSuccess = $App/OptionalSettingsMain/OptionalSettings/SuccessSettings/HBoxContainer2/AddButtonSuccess
+
 
 var mainTheme = preload("res://assets/themes/main_theme.tres")
 var defaultTheme = preload("res://assets/themes/default_theme.tres")
