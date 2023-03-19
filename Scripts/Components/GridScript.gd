@@ -4,10 +4,9 @@ var labelScript = preload("res://Scripts/Components/LabelScript.gd")
 var animations = false
 
 # Set color to the result
-# Not in use!
 func _setColorToResult(node: Label, i: int, failureValues: PoolIntArray, successValues: PoolIntArray, results: PoolIntArray):
 	if(node.has_color_override("font_color")):
-		node.add_color_override("font_color", Color(1,1,1))
+		node.remove_color_override("font_color")
 	if(failureValues.has(results[i])):
 		node.add_color_override("font_color", Color(1,0,0))
 		return
