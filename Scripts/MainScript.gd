@@ -267,8 +267,10 @@ func _on_ThemeSwitch_toggled(button_pressed):
 func _on_QuickSelectOpenButton_pressed():
 	if(diceList.is_visible_in_tree()):
 		diceList.hide()
+		$App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/QuickSelection/Header/OpenButton.text = "Open"
 	else:
 		diceList.show()
+		$App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/QuickSelection/Header/OpenButton.text = "Close"
 	pass
 
 # Quick selection list

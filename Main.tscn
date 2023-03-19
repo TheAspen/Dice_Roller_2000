@@ -69,7 +69,7 @@ uppercase = true
 
 [node name="OpenSettings" type="Button" parent="App/OptionalSettingsMain/HBoxContainer"]
 margin_left = 200.0
-margin_right = 248.0
+margin_right = 252.0
 margin_bottom = 24.0
 focus_mode = 0
 mouse_default_cursor_shape = 2
@@ -309,15 +309,15 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="CenterMargin" type="MarginContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer"]
-margin_left = 98.0
+margin_left = 95.0
 margin_top = 24.0
-margin_right = 683.0
+margin_right = 687.0
 margin_bottom = 223.0
 custom_constants/margin_left = 182
 
 [node name="CenterHBox" type="HBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin"]
 margin_left = 182.0
-margin_right = 585.0
+margin_right = 592.0
 margin_bottom = 199.0
 custom_constants/separation = 30
 
@@ -432,12 +432,13 @@ valign = 1
 
 [node name="QuickSelection" type="VBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox"]
 margin_left = 250.0
-margin_right = 403.0
+margin_right = 410.0
 margin_bottom = 199.0
 
 [node name="Header" type="HBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/QuickSelection"]
-margin_right = 153.0
+margin_right = 160.0
 margin_bottom = 24.0
+rect_min_size = Vector2( 160, 0 )
 custom_constants/separation = 10
 
 [node name="Label" type="Label" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/QuickSelection/Header"]
@@ -448,15 +449,17 @@ text = "Quick Select"
 
 [node name="OpenButton" type="Button" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/QuickSelection/Header"]
 margin_left = 105.0
-margin_right = 153.0
+margin_right = 157.0
 margin_bottom = 24.0
+mouse_default_cursor_shape = 2
 text = "Open"
 
 [node name="DiceList" type="ItemList" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/QuickSelection"]
 margin_top = 28.0
-margin_right = 153.0
+margin_right = 160.0
 margin_bottom = 199.0
 rect_min_size = Vector2( 80, 0 )
+mouse_default_cursor_shape = 2
 size_flags_vertical = 3
 items = [ "D4", null, false, "D6", null, false, "D8", null, false, "D10", null, false, "D12", null, false, "D20", null, false ]
 allow_reselect = true
@@ -507,17 +510,17 @@ custom_constants/separation = 10
 alignment = 1
 
 [node name="RolledDices" type="Label" parent="App/VBoxContainer/RolledDicesArray/HBoxContainer"]
-margin_left = 317.0
+margin_left = 315.0
 margin_top = 2.0
-margin_right = 413.0
+margin_right = 411.0
 margin_bottom = 22.0
 text = "Rolled dices:"
 align = 1
 valign = 1
 
 [node name="SortButton" type="Button" parent="App/VBoxContainer/RolledDicesArray/HBoxContainer"]
-margin_left = 423.0
-margin_right = 464.0
+margin_left = 421.0
+margin_right = 466.0
 margin_bottom = 24.0
 focus_mode = 0
 disabled = true
