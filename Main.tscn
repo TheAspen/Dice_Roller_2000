@@ -1,12 +1,6 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/MainScript.gd" type="Script" id=1]
-[ext_resource path="res://assets/addButton_pressed.png" type="Texture" id=2]
-[ext_resource path="res://assets/deleteButton_pressed.png" type="Texture" id=3]
-[ext_resource path="res://assets/addButton.png" type="Texture" id=4]
-[ext_resource path="res://assets/deleteButton.png" type="Texture" id=5]
-[ext_resource path="res://assets/addButton_normal.png" type="Texture" id=6]
-[ext_resource path="res://assets/deleteButton_normal.png" type="Texture" id=7]
 [ext_resource path="res://Scripts/Components/GridScript.gd" type="Script" id=8]
 [ext_resource path="res://assets/fonts/FredokaOne-Regular.ttf" type="DynamicFontData" id=9]
 [ext_resource path="res://assets/themes/main_theme.tres" type="Theme" id=10]
@@ -77,13 +71,13 @@ text = "Open"
 [node name="OptionalSettings" type="VBoxContainer" parent="App/OptionalSettingsMain"]
 margin_top = 29.0
 margin_right = 782.0
-margin_bottom = 290.0
-custom_constants/separation = 15
+margin_bottom = 325.0
+custom_constants/separation = 20
 
 [node name="FailureSettings" type="VBoxContainer" parent="App/OptionalSettingsMain/OptionalSettings"]
 margin_right = 782.0
-margin_bottom = 74.0
-custom_constants/separation = 5
+margin_bottom = 84.0
+custom_constants/separation = 10
 
 [node name="FailureText" type="Label" parent="App/OptionalSettingsMain/OptionalSettings/FailureSettings"]
 margin_right = 782.0
@@ -91,9 +85,9 @@ margin_bottom = 20.0
 text = "Failure value"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="App/OptionalSettingsMain/OptionalSettings/FailureSettings"]
-margin_top = 25.0
+margin_top = 30.0
 margin_right = 782.0
-margin_bottom = 49.0
+margin_bottom = 54.0
 custom_constants/separation = 10
 
 [node name="FailureValue" type="SpinBox" parent="App/OptionalSettingsMain/OptionalSettings/FailureSettings/HBoxContainer"]
@@ -104,36 +98,30 @@ min_value = 1.0
 value = 1.0
 rounded = true
 
-[node name="DecreaseButtonFailure" type="TextureButton" parent="App/OptionalSettingsMain/OptionalSettings/FailureSettings/HBoxContainer"]
+[node name="DecreaseButtonFailure" type="Button" parent="App/OptionalSettingsMain/OptionalSettings/FailureSettings/HBoxContainer"]
 margin_left = 76.0
-margin_top = 4.0
-margin_right = 92.0
-margin_bottom = 20.0
+margin_right = 150.0
+margin_bottom = 24.0
 hint_tooltip = "Remove a value from the failure values -list"
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture_normal = ExtResource( 7 )
-texture_pressed = ExtResource( 3 )
-texture_hover = ExtResource( 5 )
+text = "Remove"
 
-[node name="AddButtonFailure" type="TextureButton" parent="App/OptionalSettingsMain/OptionalSettings/FailureSettings/HBoxContainer"]
-margin_left = 102.0
-margin_top = 4.0
-margin_right = 118.0
-margin_bottom = 20.0
+[node name="AddButtonFailure" type="Button" parent="App/OptionalSettingsMain/OptionalSettings/FailureSettings/HBoxContainer"]
+margin_left = 160.0
+margin_right = 204.0
+margin_bottom = 24.0
 hint_tooltip = "Add the value to the failure values -list"
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture_normal = ExtResource( 6 )
-texture_pressed = ExtResource( 2 )
-texture_hover = ExtResource( 4 )
+text = "Add"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="App/OptionalSettingsMain/OptionalSettings/FailureSettings"]
-margin_top = 54.0
+margin_top = 64.0
 margin_right = 782.0
-margin_bottom = 74.0
+margin_bottom = 84.0
 
 [node name="Label" type="Label" parent="App/OptionalSettingsMain/OptionalSettings/FailureSettings/HBoxContainer2"]
 margin_right = 119.0
@@ -150,10 +138,10 @@ margin_bottom = 20.0
 text = "..."
 
 [node name="SuccessSettings" type="VBoxContainer" parent="App/OptionalSettingsMain/OptionalSettings"]
-margin_top = 89.0
+margin_top = 104.0
 margin_right = 782.0
-margin_bottom = 163.0
-custom_constants/separation = 5
+margin_bottom = 188.0
+custom_constants/separation = 10
 
 [node name="SuccessText" type="Label" parent="App/OptionalSettingsMain/OptionalSettings/SuccessSettings"]
 margin_right = 782.0
@@ -161,9 +149,9 @@ margin_bottom = 20.0
 text = "Success value"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="App/OptionalSettingsMain/OptionalSettings/SuccessSettings"]
-margin_top = 25.0
+margin_top = 30.0
 margin_right = 782.0
-margin_bottom = 49.0
+margin_bottom = 54.0
 custom_constants/separation = 10
 
 [node name="SuccessValue" type="SpinBox" parent="App/OptionalSettingsMain/OptionalSettings/SuccessSettings/HBoxContainer2"]
@@ -174,36 +162,30 @@ min_value = 1.0
 value = 1.0
 rounded = true
 
-[node name="DecreaseButtonSuccess" type="TextureButton" parent="App/OptionalSettingsMain/OptionalSettings/SuccessSettings/HBoxContainer2"]
+[node name="DecreaseButtonSuccess" type="Button" parent="App/OptionalSettingsMain/OptionalSettings/SuccessSettings/HBoxContainer2"]
 margin_left = 76.0
-margin_top = 4.0
-margin_right = 92.0
-margin_bottom = 20.0
+margin_right = 150.0
+margin_bottom = 24.0
 hint_tooltip = "Remove a value from the success values -list"
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture_normal = ExtResource( 7 )
-texture_pressed = ExtResource( 3 )
-texture_hover = ExtResource( 5 )
+text = "Remove"
 
-[node name="AddButtonSuccess" type="TextureButton" parent="App/OptionalSettingsMain/OptionalSettings/SuccessSettings/HBoxContainer2"]
-margin_left = 102.0
-margin_top = 4.0
-margin_right = 118.0
-margin_bottom = 20.0
+[node name="AddButtonSuccess" type="Button" parent="App/OptionalSettingsMain/OptionalSettings/SuccessSettings/HBoxContainer2"]
+margin_left = 160.0
+margin_right = 204.0
+margin_bottom = 24.0
 hint_tooltip = "Add the value to the success values -list"
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture_normal = ExtResource( 6 )
-texture_pressed = ExtResource( 2 )
-texture_hover = ExtResource( 4 )
+text = "Add"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="App/OptionalSettingsMain/OptionalSettings/SuccessSettings"]
-margin_top = 54.0
+margin_top = 64.0
 margin_right = 782.0
-margin_bottom = 74.0
+margin_bottom = 84.0
 
 [node name="Label2" type="Label" parent="App/OptionalSettingsMain/OptionalSettings/SuccessSettings/HBoxContainer"]
 margin_right = 124.0
@@ -220,9 +202,9 @@ margin_bottom = 20.0
 text = "..."
 
 [node name="OptionalResultHBox" type="HBoxContainer" parent="App/OptionalSettingsMain/OptionalSettings"]
-margin_top = 178.0
+margin_top = 208.0
 margin_right = 782.0
-margin_bottom = 222.0
+margin_bottom = 252.0
 custom_constants/separation = 50
 
 [node name="FailureVBox" type="VBoxContainer" parent="App/OptionalSettingsMain/OptionalSettings/OptionalResultHBox"]
@@ -261,9 +243,9 @@ align = 1
 valign = 1
 
 [node name="ClearOptionalValues" type="Button" parent="App/OptionalSettingsMain/OptionalSettings"]
-margin_top = 237.0
+margin_top = 272.0
 margin_right = 150.0
-margin_bottom = 261.0
+margin_bottom = 296.0
 rect_min_size = Vector2( 150, 0 )
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 0
