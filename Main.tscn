@@ -71,9 +71,7 @@ uppercase = true
 margin_left = 200.0
 margin_right = 252.0
 margin_bottom = 24.0
-focus_mode = 0
 mouse_default_cursor_shape = 2
-enabled_focus_mode = 0
 text = "Open"
 
 [node name="OptionalSettings" type="VBoxContainer" parent="App/OptionalSettingsMain"]
@@ -455,6 +453,7 @@ mouse_default_cursor_shape = 2
 text = "Open"
 
 [node name="DiceList" type="ItemList" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/QuickSelection"]
+visible = false
 margin_top = 28.0
 margin_right = 160.0
 margin_bottom = 199.0
@@ -463,6 +462,13 @@ mouse_default_cursor_shape = 2
 size_flags_vertical = 3
 items = [ "D4", null, false, "D6", null, false, "D8", null, false, "D10", null, false, "D12", null, false, "D20", null, false ]
 allow_reselect = true
+
+[node name="MenuButton" type="MenuButton" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/QuickSelection"]
+margin_top = 28.0
+margin_right = 160.0
+margin_bottom = 52.0
+text = "testi"
+items = [ "D4", null, 0, false, false, 0, 0, null, "", false, "D6", null, 0, false, false, 1, 0, null, "", false, "D8", null, 0, false, false, 2, 0, null, "", false, "D10", null, 0, false, false, 3, 0, null, "", false, "D12", null, 0, false, false, 4, 0, null, "", false, "D20", null, 0, false, false, 5, 0, null, "", false ]
 
 [node name="RolledDicesArray" type="VBoxContainer" parent="App/VBoxContainer"]
 margin_top = 286.0
