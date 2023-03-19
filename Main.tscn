@@ -69,6 +69,7 @@ mouse_default_cursor_shape = 2
 text = "Open"
 
 [node name="OptionalSettings" type="VBoxContainer" parent="App/OptionalSettingsMain"]
+visible = false
 margin_top = 29.0
 margin_right = 782.0
 margin_bottom = 325.0
