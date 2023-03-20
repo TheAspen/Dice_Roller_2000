@@ -12,24 +12,24 @@ var sorter = null
 var resultTotal = 0
 var showAnimations = false
 
-onready var resultGrid = $App/VBoxContainer/RolledDicesArray/ScrollContainer/GridContainer
-onready var resultLabel = $App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/Container/Results/Result
-onready var rollsTable = $App/VBoxContainer/RolledDicesArray/RollsTable
-onready var failureResultValue = $App/OptionalSettingsMain/OptionalSettings/OptionalResultHBox/FailureVBox/FailureResultValue
-onready var successResultValue = $App/OptionalSettingsMain/OptionalSettings/OptionalResultHBox/SuccessVBox/SuccessResultValue
-onready var diceSpinBox = $App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/Container/HBoxContainer/Options/DiceSettings/Dice
-onready var amountSpinBox =  $App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/Container/HBoxContainer/Options/AmountSettings/Amount
-onready var failureValuesArray = $App/OptionalSettingsMain/OptionalSettings/FailureSettings/HBoxContainer2/FailureValuesArray
-onready var successValuesArray = $App/OptionalSettingsMain/OptionalSettings/SuccessSettings/HBoxContainer/SuccessValuesArray
-onready var sortButton = $App/VBoxContainer/RolledDicesArray/HBoxContainer/SortButton
-onready var animTime = $App/VBoxContainer/RolledDicesArray/AnimationSettings/AnimTime
-onready var themeSwitch = $App/ThemeSwitch
-onready var diceList = $App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/QuickSelection/DiceList
-onready var quickSelectionHeader = $App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/QuickSelection/Header
-onready var decreaseButtonFailure = $App/OptionalSettingsMain/OptionalSettings/FailureSettings/HBoxContainer/DecreaseButtonFailure
-onready var addButtonFailure = $App/OptionalSettingsMain/OptionalSettings/FailureSettings/HBoxContainer/AddButtonFailure
-onready var decreaseButtonSuccess = $App/OptionalSettingsMain/OptionalSettings/SuccessSettings/HBoxContainer2/DecreaseButtonSuccess
-onready var addButtonSuccess = $App/OptionalSettingsMain/OptionalSettings/SuccessSettings/HBoxContainer2/AddButtonSuccess
+@onready var resultGrid = $App/VBoxContainer/RolledDicesArray/ScrollContainer/GridContainer
+@onready var resultLabel = $App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/Container/Results/Result
+@onready var rollsTable = $App/VBoxContainer/RolledDicesArray/RollsTable
+@onready var failureResultValue = $App/OptionalSettingsMain/OptionalSettings/OptionalResultHBox/FailureVBox/FailureResultValue
+@onready var successResultValue = $App/OptionalSettingsMain/OptionalSettings/OptionalResultHBox/SuccessVBox/SuccessResultValue
+@onready var diceSpinBox = $App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/Container/HBoxContainer/Options/DiceSettings/Dice
+@onready var amountSpinBox =  $App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/Container/HBoxContainer/Options/AmountSettings/Amount
+@onready var failureValuesArray = $App/OptionalSettingsMain/OptionalSettings/FailureSettings/HBoxContainer2/FailureValuesArray
+@onready var successValuesArray = $App/OptionalSettingsMain/OptionalSettings/SuccessSettings/HBoxContainer/SuccessValuesArray
+@onready var sortButton = $App/VBoxContainer/RolledDicesArray/HBoxContainer/SortButton
+@onready var animTime = $App/VBoxContainer/RolledDicesArray/AnimationSettings/AnimTime
+@onready var themeSwitch = $App/ThemeSwitch
+@onready var diceList = $App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/QuickSelection/DiceList
+@onready var quickSelectionHeader = $App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/QuickSelection/Header
+@onready var decreaseButtonFailure = $App/OptionalSettingsMain/OptionalSettings/FailureSettings/HBoxContainer/DecreaseButtonFailure
+@onready var addButtonFailure = $App/OptionalSettingsMain/OptionalSettings/FailureSettings/HBoxContainer/AddButtonFailure
+@onready var decreaseButtonSuccess = $App/OptionalSettingsMain/OptionalSettings/SuccessSettings/HBoxContainer2/DecreaseButtonSuccess
+@onready var addButtonSuccess = $App/OptionalSettingsMain/OptionalSettings/SuccessSettings/HBoxContainer2/AddButtonSuccess
 
 
 var mainTheme = preload("res://assets/themes/main_theme.tres")
@@ -93,9 +93,9 @@ func _hideResultLabels():
 	resultLabel.text = "???"
 
 func _showResultLabels():
-	failureResultValue.text = var2str(totalFailures)
-	successResultValue.text = var2str(totalSuccess)
-	resultLabel.text = var2str(resultTotal)
+	failureResultValue.text = var_to_str(totalFailures)
+	successResultValue.text = var_to_str(totalSuccess)
+	resultLabel.text = var_to_str(resultTotal)
 	# Enable sort button
 	sortButton.disabled = false
 
@@ -106,7 +106,7 @@ func _on_Roll_pressed():
 	_clearAll()
 	#_setRollingTextToGrid()
 	# Wait a bit
-	yield(get_tree().create_timer(0.5), "timeout")
+	await get_tree().create_timer(0.5).timeout
 	var dice = int(diceSpinBox.value)
 	var amount = int(amountSpinBox.value)
 	# Hide total labels
@@ -159,15 +159,15 @@ func _removeSuccessValue():
 	pass
 
 func _clearOptionalSettings():
-	 failureValues = []
-	 successValues = []
-	 totalFailures = 0
-	 totalSuccess = 0
-	 failureResultValue.text = "..."
-	 successResultValue.text = "..."
-	 failureValuesArray.text = "..."
-	 successValuesArray.text = "..."
-	
+	failureValues = []
+	successValues = []
+	totalFailures = 0
+	totalSuccess = 0
+	failureResultValue.text = "..."
+	successResultValue.text = "..."
+	failureValuesArray.text = "..."
+	successValuesArray.text = "..."
+
 func _checkFailures():
 	
 	for i in range(results.size()):
@@ -218,9 +218,9 @@ func _updateFailureValues():
 		return
 	for i in range(failureValues.size()):
 		if(i == 0):
-			failureValuesArray.text = var2str(failureValues[i])
+			failureValuesArray.text = var_to_str(failureValues[i])
 			continue
-		failureValuesArray.text = failureValuesArray.text + ", " + var2str(failureValues[i])
+		failureValuesArray.text = failureValuesArray.text + ", " + var_to_str(failureValues[i])
 
 func _updateSuccessValues():
 	if(successValues.size() == 0):
@@ -228,9 +228,9 @@ func _updateSuccessValues():
 		return
 	for i in range(successValues.size()):
 		if(i == 0):
-			successValuesArray.text = var2str(successValues[i])
+			successValuesArray.text = var_to_str(successValues[i])
 			continue
-		successValuesArray.text = successValuesArray.text + ", " + var2str(successValues[i])
+		successValuesArray.text = successValuesArray.text + ", " + var_to_str(successValues[i])
 
 # Button function for advanced settings
 func _on_OpenSettings_pressed():
@@ -247,9 +247,9 @@ func _on_OpenSettings_pressed():
 # Sort rolled values
 func _on_SortButton_pressed():
 	var children = resultGrid.get_children()
-	results.sort_custom(sorter,"customSorter")
+	results.sort_custom(Callable(sorter,"customSorter"))
 	for i in children.size():
-		children[i].text = var2str(results[i])
+		children[i].text = var_to_str(results[i])
 		resultGrid._setColorToResult(children[i], i, failureValues, successValues, results)
 	pass
 
@@ -262,10 +262,10 @@ func _on_AnimToggle_toggled(button_pressed):
 func _on_ThemeSwitch_toggled(button_pressed):
 	if(button_pressed):
 		theme = mainTheme
-		VisualServer.set_default_clear_color(Color.white)
+		RenderingServer.set_default_clear_color(Color.WHITE)
 	else:
 		theme = defaultTheme
-		VisualServer.set_default_clear_color("#4d4d4d")
+		RenderingServer.set_default_clear_color("#4d4d4d")
 	pass
 
 # Open and close quick selection list
@@ -294,6 +294,6 @@ func _on_DiceList_item_selected(index):
 			diceSpinBox.value = 12
 		"D20":
 			diceSpinBox.value = 20
-	yield(get_tree().create_timer(0.1), "timeout")
-	diceList.unselect(index)
+	await get_tree().create_timer(0.1).timeout
+	diceList.deselect(index)
 	pass 

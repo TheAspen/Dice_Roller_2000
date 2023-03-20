@@ -6,11 +6,7 @@
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
 
-config_version=4
-
-_global_script_classes=[  ]
-_global_script_class_icons={
-}
+config_version=5
 
 [application]
 
@@ -19,7 +15,8 @@ config/description="A random number generator.
 Perfect for roleplay games like Shadowrun or D&D.
 Designed for situations where you have to roll lots of dices."
 run/main_scene="res://Main.tscn"
-boot_splash/bg_color=Color( 0.141176, 0.141176, 0.141176, 1 )
+config/features=PackedStringArray("4.0")
+boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
 config/icon="res://logo.png"
 config/windows_native_icon="res://icon.ico"
 
@@ -29,8 +26,8 @@ settings/gdscript/max_call_stack=4000
 
 [rendering]
 
+renderer/rendering_method="gl_compatibility"
+environment/defaults/default_clear_color=Color(1, 1, 1, 1)
+environment/defaults/default_environment="res://default_env.tres"
 quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
-vram_compression/import_etc2=false
-environment/default_clear_color=Color( 1, 1, 1, 1 )
-environment/default_environment="res://default_env.tres"

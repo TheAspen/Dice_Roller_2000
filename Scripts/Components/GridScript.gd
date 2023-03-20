@@ -4,18 +4,18 @@ var labelScript = preload("res://Scripts/Components/LabelScript.gd")
 var animations = false
 
 # Set color to the result
-func _setColorToResult(node: Label, i: int, failureValues: PoolIntArray, successValues: PoolIntArray, results: PoolIntArray):
-	if(node.has_color_override("font_color")):
-		node.remove_color_override("font_color")
+func _setColorToResult(node: Label, i: int, failureValues: PackedInt32Array, successValues: PackedInt32Array, results: PackedInt32Array):
+	if(node.has_theme_color_override("font_color")):
+		node.remove_theme_color_override("font_color")
 	if(failureValues.has(results[i])):
-		node.add_color_override("font_color", Color(1,0,0))
+		node.add_theme_color_override("font_color", Color(1,0,0))
 		return
 	if(successValues.has(results[i])):
-		node.add_color_override("font_color", Color(0,1,0))
+		node.add_theme_color_override("font_color", Color(0,1,0))
 		return
 
 # Core function, called from MainScript
-func _createLabels(maxValue: int, waitTime: float, results: PoolIntArray, failureValues: PoolIntArray, successValues: PoolIntArray, showAnimations: bool): 
+func _createLabels(maxValue: int, waitTime: float, results: PackedInt32Array, failureValues: PackedInt32Array, successValues: PackedInt32Array, showAnimations: bool): 
 	animations = showAnimations
 	for i in range(results.size()):
 		var node = Label.new()

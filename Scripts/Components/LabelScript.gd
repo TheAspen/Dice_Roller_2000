@@ -16,20 +16,20 @@ var animTimer = null
 
 # Set color to the result
 func _setColorToResult():
-	if(has_color_override("font_color")):
-		add_color_override("font_color", Color(1,1,1))
+	if(has_theme_color_override("font_color")):
+		add_theme_color_override("font_color", Color(1,1,1))
 	if(failures.has(realValue)):
-		add_color_override("font_color", Color(1,0,0))
+		add_theme_color_override("font_color", Color(1,0,0))
 		return
 	if(successes.has(realValue)):
-		add_color_override("font_color", Color(0,1,0))
+		add_theme_color_override("font_color", Color(0,1,0))
 		return
 
 
 func _ready():
 	self.hide()
 	# Set min size to 20, prevent "shaking" effect.
-	self.rect_min_size = Vector2(20,0)
+	self.custom_minimum_size = Vector2(20,0)
 	# Randomize
 	generator.randomize()
 	animTimer = Timer.new()
@@ -43,7 +43,7 @@ func _starTimer():
 		_setNewRandomValue()
 
 func _setNewRandomValue():
-	text = var2str(generator.randi_range(0, maxValue))
+	text = var_to_str(generator.randi_range(0, maxValue))
 
 # Call this from Grid
 # Initialize label
@@ -58,10 +58,10 @@ func _initLabel(pMaxValue: int, pRealValue: int, pTimer: int, pIndex: int, pFail
 
 # Set true values
 func _setValues():
-	text = var2str(realValue)
+	text = var_to_str(realValue)
 	# Set min size to 10
 	if(allResults.size() > 1):
-		self.rect_min_size = Vector2(10,0)
+		self.custom_minimum_size = Vector2(10,0)
 	# Value is set, do not show "animations" anymore.
 	valueSet = true
 	zero = 0
