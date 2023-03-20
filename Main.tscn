@@ -10,13 +10,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 theme = ExtResource("10")
-theme_override_constants/margin_left = 120
-theme_override_constants/margin_top = 100
-theme_override_constants/margin_right = 120
 script = ExtResource("1")
 
 [node name="App" type="MarginContainer" parent="."]
 layout_mode = 2
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 120
 
 [node name="ThemeSwitch" type="CheckButton" parent="App"]
 layout_mode = 2
@@ -24,7 +24,7 @@ size_flags_horizontal = 8
 size_flags_vertical = 2
 mouse_default_cursor_shape = 2
 button_pressed = true
-text = "Light3D theme"
+text = "Light theme"
 
 [node name="OptionalSettingsMain" type="VBoxContainer" parent="App"]
 layout_mode = 2
@@ -267,7 +267,6 @@ text = "Roll"
 
 [node name="Results" type="VBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/Container"]
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
@@ -276,12 +275,14 @@ layout_mode = 2
 tooltip_text = "Total sum, when dice values are combined."
 mouse_filter = 0
 text = "Total"
+horizontal_alignment = 1
 
 [node name="Result" type="Label" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/Container/Results"]
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "..."
+horizontal_alignment = 1
 
 [node name="QuickSelection" type="VBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox"]
 layout_mode = 2
@@ -300,8 +301,7 @@ mouse_default_cursor_shape = 2
 text = "Open"
 
 [node name="DiceList" type="ItemList" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/QuickSelection"]
-visible = false
-custom_minimum_size = Vector2(80, 0)
+custom_minimum_size = Vector2(80, 148)
 layout_mode = 2
 size_flags_vertical = 3
 mouse_default_cursor_shape = 2
@@ -382,7 +382,7 @@ script = ExtResource("8")
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
-text = "ver. 1.1.0"
+text = "ver. 1.1.0 "
 
 [connection signal="toggled" from="App/ThemeSwitch" to="." method="_on_ThemeSwitch_toggled"]
 [connection signal="pressed" from="App/OptionalSettingsMain/HBoxContainer/OpenSettings" to="." method="_on_OpenSettings_pressed"]

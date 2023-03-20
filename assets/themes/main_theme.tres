@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=21 format=3 uid="uid://cdnyf03da7vs3"]
+[gd_resource type="Theme" load_steps=23 format=3 uid="uid://cdnyf03da7vs3"]
 
 [ext_resource type="FontFile" uid="uid://o35c7fucwuaw" path="res://assets/fonts/FredokaOne-Regular.ttf" id="1"]
 [ext_resource type="Texture2D" uid="uid://cautrx61y7rv3" path="res://assets/arrows_smaller.png" id="2"]
@@ -60,7 +60,7 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
 [sub_resource type="StyleBoxFlat" id="21"]
-bg_color = Color(0.654902, 0.654902, 0.654902, 1)
+bg_color = Color(0.745098, 0.745098, 0.745098, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -97,6 +97,25 @@ corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_42dll"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r3cly"]
+content_margin_left = 5.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [sub_resource type="StyleBoxFlat" id="20"]
 bg_color = Color(0.898039, 0.898039, 0.898039, 1)
@@ -160,6 +179,11 @@ Button/colors/font_color_disabled = Color(0, 0, 0, 0.4)
 Button/colors/font_color_focus = Color(0, 0, 0, 1)
 Button/colors/font_color_hover = Color(0, 0, 0, 1)
 Button/colors/font_color_pressed = Color(0, 0, 0, 1)
+Button/colors/font_disabled_color = Color(0, 0, 0, 0.501961)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
 Button/styles/disabled = SubResource("22")
 Button/styles/focus = SubResource("23")
 Button/styles/hover = SubResource("1")
@@ -178,11 +202,15 @@ CheckButton/styles/normal = SubResource("13")
 CheckButton/styles/pressed = SubResource("17")
 ItemList/colors/font_color = Color(0, 0, 0, 1)
 ItemList/colors/font_color_selected = Color(0, 0, 0, 1)
+ItemList/colors/font_selected_color = Color(0, 0, 0, 1)
 ItemList/constants/vseparation = 4
 ItemList/styles/bg = SubResource("19")
+ItemList/styles/focus = SubResource("StyleBoxEmpty_42dll")
+ItemList/styles/panel = SubResource("StyleBoxFlat_r3cly")
 ItemList/styles/selected_focus = SubResource("20")
 Label/colors/font_color = Color(0, 0, 0, 1)
 Label/styles/normal = SubResource("6")
+LineEdit/colors/caret_color = Color(0.384314, 0.384314, 0.384314, 1)
 LineEdit/colors/cursor_color = Color(0, 0, 0, 1)
 LineEdit/colors/font_color = Color(0, 0, 0, 1)
 LineEdit/styles/focus = SubResource("9")
