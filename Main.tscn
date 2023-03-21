@@ -208,7 +208,7 @@ mouse_filter = 2
 [node name="CenterMargin" type="MarginContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer"]
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/margin_left = 225
+theme_override_constants/margin_left = 205
 
 [node name="CenterHBox" type="HBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin"]
 layout_mode = 2
@@ -216,6 +216,7 @@ theme_override_constants/separation = 40
 
 [node name="Container" type="VBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox"]
 layout_mode = 2
+theme_override_constants/separation = 20
 
 [node name="HBoxContainer" type="HBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/Container"]
 layout_mode = 2
@@ -224,6 +225,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_constants/separation = 10
 alignment = 1
 
 [node name="DiceSettings" type="VBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/Container/HBoxContainer/Options"]
@@ -309,9 +311,8 @@ mouse_default_cursor_shape = 2
 text = "Open"
 
 [node name="DiceList" type="ItemList" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/QuickSelection"]
-custom_minimum_size = Vector2(80, 148)
+custom_minimum_size = Vector2(80, 155)
 layout_mode = 2
-size_flags_vertical = 3
 mouse_default_cursor_shape = 2
 allow_reselect = true
 item_count = 6
