@@ -1,8 +1,8 @@
 2a60927148abd1d33b818b535e306557
-::res://::1679339535
-default_env.tres::Environment::7981487610182332614::1679339487::0::1::::<><>::
+::res://::1679418482
+default_env.tres::Environment::7981487610182332614::1679418469::0::1::::<><>::
 logo.png::CompressedTexture2D::7644907557066188823::1675426290::1679339487::1::::<><>::
-Main.tscn::PackedScene::1682236738357554742::1679339487::0::1::::<><>::res://Scripts/MainScript.gd<>res://Scripts/Components/GridScript.gd<>uid://cdnyf03da7vs3
+Main.tscn::PackedScene::1682236738357554742::1679418469::0::1::::<><>::res://Scripts/MainScript.gd<>res://Scripts/Components/GridScript.gd<>uid://cdnyf03da7vs3
 README.md::TextFile::-1::1675426290::0::1::::<><>::
 README.txt::TextFile::-1::1677309868::0::1::::<><>::
 ::res://assets/::1679339487
@@ -24,9 +24,9 @@ FredokaOne-Regular.ttf::FontFile::1042273158800426486::1675426290::1679339487::1
 310x310_logo.png::CompressedTexture2D::5177967632002503606::1679339487::1679339487::1::::<><>::
 1080_logo.png::CompressedTexture2D::5199513402696560235::1679339487::1679339487::1::::<><>::
 DR_2000_splash.png::CompressedTexture2D::4386520159975213069::1679339487::1679339487::1::::<><>::
-::res://assets/themes/::1679339487
-default_theme.tres::Theme::105240729212138036::1679339487::0::1::::<><>::uid://o35c7fucwuaw
-main_theme.tres::Theme::5011712302374862132::1679339487::0::1::::<><>::uid://o35c7fucwuaw<>uid://cautrx61y7rv3
+::res://assets/themes/::1679417506
+default_theme.tres::Theme::105240729212138036::1679417506::0::1::::<><>::uid://o35c7fucwuaw
+main_theme.tres::Theme::5011712302374862132::1679417506::0::1::::<><>::uid://o35c7fucwuaw<>uid://cautrx61y7rv3
 ::res://Scripts/::1679339487
 MainScript.gd::GDScript::-1::1679339487::0::1::::<>MarginContainer<>::
 ::res://Scripts/Components/::1679339487

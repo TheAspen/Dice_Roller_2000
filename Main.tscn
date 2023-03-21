@@ -33,6 +33,7 @@ mouse_filter = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="App/OptionalSettingsMain"]
 layout_mode = 2
 mouse_filter = 2
+theme_override_constants/separation = 50
 
 [node name="Label" type="Label" parent="App/OptionalSettingsMain/HBoxContainer"]
 layout_mode = 2
@@ -45,11 +46,12 @@ mouse_default_cursor_shape = 2
 text = "Open"
 
 [node name="OptionalSettings" type="VBoxContainer" parent="App/OptionalSettingsMain"]
-visible = false
 layout_mode = 2
+theme_override_constants/separation = 10
 
 [node name="FailureSettings" type="VBoxContainer" parent="App/OptionalSettingsMain/OptionalSettings"]
 layout_mode = 2
+theme_override_constants/separation = 15
 
 [node name="FailureText" type="Label" parent="App/OptionalSettingsMain/OptionalSettings/FailureSettings"]
 layout_mode = 2
@@ -57,6 +59,7 @@ text = "Failure value"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="App/OptionalSettingsMain/OptionalSettings/FailureSettings"]
 layout_mode = 2
+theme_override_constants/separation = 10
 
 [node name="FailureValue" type="SpinBox" parent="App/OptionalSettingsMain/OptionalSettings/FailureSettings/HBoxContainer"]
 layout_mode = 2
@@ -96,6 +99,7 @@ text = "..."
 
 [node name="SuccessSettings" type="VBoxContainer" parent="App/OptionalSettingsMain/OptionalSettings"]
 layout_mode = 2
+theme_override_constants/separation = 15
 
 [node name="SuccessText" type="Label" parent="App/OptionalSettingsMain/OptionalSettings/SuccessSettings"]
 layout_mode = 2
@@ -103,6 +107,7 @@ text = "Success value"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="App/OptionalSettingsMain/OptionalSettings/SuccessSettings"]
 layout_mode = 2
+theme_override_constants/separation = 10
 
 [node name="SuccessValue" type="SpinBox" parent="App/OptionalSettingsMain/OptionalSettings/SuccessSettings/HBoxContainer2"]
 layout_mode = 2
@@ -153,6 +158,7 @@ text = "Failures"
 [node name="FailureResultValue" type="Label" parent="App/OptionalSettingsMain/OptionalSettings/OptionalResultHBox/FailureVBox"]
 layout_mode = 2
 text = "..."
+horizontal_alignment = 1
 
 [node name="SuccessVBox" type="VBoxContainer" parent="App/OptionalSettingsMain/OptionalSettings/OptionalResultHBox"]
 layout_mode = 2
@@ -164,6 +170,7 @@ text = "Successes"
 [node name="SuccessResultValue" type="Label" parent="App/OptionalSettingsMain/OptionalSettings/OptionalResultHBox/SuccessVBox"]
 layout_mode = 2
 text = "..."
+horizontal_alignment = 1
 
 [node name="ClearOptionalValues" type="Button" parent="App/OptionalSettingsMain/OptionalSettings"]
 custom_minimum_size = Vector2(150, 0)
@@ -201,10 +208,11 @@ mouse_filter = 2
 [node name="CenterMargin" type="MarginContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer"]
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/margin_left = 182
+theme_override_constants/margin_left = 225
 
 [node name="CenterHBox" type="HBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin"]
 layout_mode = 2
+theme_override_constants/separation = 40
 
 [node name="Container" type="VBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox"]
 layout_mode = 2
