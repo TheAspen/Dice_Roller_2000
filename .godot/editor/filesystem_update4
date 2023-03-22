@@ -2,3 +2,4 @@ res://default_env.tres
 res://Main.tscn
 res://assets/themes/main_theme.tres
 res://assets/themes/default_theme.tres
+res://Scripts/MainScript.gd

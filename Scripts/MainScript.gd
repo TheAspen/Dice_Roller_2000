@@ -22,6 +22,7 @@ var showAnimations = false
 @onready var failureValuesArray = $App/OptionalSettingsMain/OptionalSettings/FailureSettings/HBoxContainer2/FailureValuesArray
 @onready var successValuesArray = $App/OptionalSettingsMain/OptionalSettings/SuccessSettings/HBoxContainer/SuccessValuesArray
 @onready var sortButton = $App/VBoxContainer/RolledDicesArray/HBoxContainer/SortButton
+#@onready var animSwitch = $App/VBoxContainer/RolledDicesArray/AnimationSettings/AnimToggle
 @onready var animTime = $App/VBoxContainer/RolledDicesArray/AnimationSettings/AnimTime
 @onready var themeSwitch = $App/ThemeSwitch
 @onready var diceList = $App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/QuickSelection/DiceList

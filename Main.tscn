@@ -46,6 +46,7 @@ mouse_default_cursor_shape = 2
 text = "Open"
 
 [node name="OptionalSettings" type="VBoxContainer" parent="App/OptionalSettingsMain"]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 10
 
@@ -197,6 +198,7 @@ mouse_filter = 2
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
+theme_override_font_sizes/font_size = 24
 text = "Dice Roller 2000"
 
 [node name="CenterContainer" type="CenterContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer"]
