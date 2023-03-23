@@ -457,6 +457,7 @@ alignment = 2
 [node name="AnimationSettings" type="HBoxContainer" parent="App/VBoxContainer/RolledDicesArray"]
 margin_right = 782.0
 margin_bottom = 32.0
+mouse_filter = 2
 alignment = 1
 
 [node name="AnimToggle" type="CheckButton" parent="App/VBoxContainer/RolledDicesArray/AnimationSettings"]
