@@ -36,6 +36,7 @@ func _ready():
 	animTimer.wait_time = 0.07
 	animTimer.one_shot = true
 	add_child(animTimer)
+	self.set_process(false)
 
 func _starTimer():
 	if(animTimer.is_stopped()):
@@ -56,6 +57,7 @@ func _initLabel(pMaxValue: int, pRealValue: int, pTimer: int, pIndex: int, pFail
 	successes = pSuccesses
 	allResults = pAllResults
 
+
 # Set true values
 func _setValues():
 	text = var2str(realValue)
@@ -70,11 +72,11 @@ func _setValues():
 	# Launch the second label
 	# _showLabel handles situation when index goes over child count
 	get_parent()._showLabel(index + 1)
+	if(self.is_processing()):
+		self.set_process(false)
 
 # Do the "animation"
 func _process(delta):
-	if(valueSet):
-		return
 	if(animTimer.is_stopped()):
 		_starTimer()
 	if(zero < timer):
@@ -87,6 +89,6 @@ func _process(delta):
 func _start(doAnimation: bool):
 	self.show()
 	if(doAnimation):
-		valueSet = false
+		self.set_process(true)
 	else:
 		_setValues()

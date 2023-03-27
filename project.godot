@@ -23,10 +23,6 @@ boot_splash/bg_color=Color( 0.141176, 0.141176, 0.141176, 1 )
 config/icon="res://logo.png"
 config/windows_native_icon="res://icon.ico"
 
-[debug]
-
-settings/gdscript/max_call_stack=4000
-
 [rendering]
 
 quality/driver/driver_name="GLES2"
