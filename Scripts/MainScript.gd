@@ -50,6 +50,7 @@ func _ready():
 	defaultGridText.text = "No rolled dices!"
 	resultGrid.add_child(defaultGridText)
 	sorter = CustomSorter.new()
+	
 	pass 
 
 func _rolldice(dice, amount):
