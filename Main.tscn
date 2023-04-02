@@ -494,17 +494,17 @@ custom_constants/separation = 10
 alignment = 1
 
 [node name="RolledDices" type="Label" parent="App/VBoxContainer/RolledDicesArray/HBoxContainer"]
-margin_left = 315.0
+margin_left = 319.0
 margin_top = 2.0
-margin_right = 411.0
+margin_right = 407.0
 margin_bottom = 22.0
-text = "Rolled dices:"
+text = "Rolled dice:"
 align = 1
 valign = 1
 
 [node name="SortButton" type="Button" parent="App/VBoxContainer/RolledDicesArray/HBoxContainer"]
-margin_left = 421.0
-margin_right = 466.0
+margin_left = 417.0
+margin_right = 462.0
 margin_bottom = 24.0
 focus_mode = 0
 disabled = true

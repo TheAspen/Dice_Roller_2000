@@ -47,7 +47,7 @@ func _ready():
 	total = 0
 	roller.randomize()
 	var defaultGridText = Label.new()
-	defaultGridText.text = "No rolled dices!"
+	defaultGridText.text = "No rolled dice!"
 	resultGrid.add_child(defaultGridText)
 	sorter = CustomSorter.new()
 	
