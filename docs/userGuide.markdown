@@ -3,7 +3,7 @@ layout: page
 title: User Guide
 permalink: /user-guide/
 ---
-![Image](../assets/guide.png "guide")
+![Image](../assets/guide.PNG "guide")
 This is the base view of the Dice Roller 2000 when all options panels are opened. 
 
 ---
