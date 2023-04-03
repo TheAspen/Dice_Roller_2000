@@ -1,13 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://MainScript.gd" type="Script" id=1]
-[ext_resource path="res://assets/addButton_pressed.png" type="Texture" id=2]
-[ext_resource path="res://assets/deleteButton_pressed.png" type="Texture" id=3]
-[ext_resource path="res://assets/addButton.png" type="Texture" id=4]
-[ext_resource path="res://assets/deleteButton.png" type="Texture" id=5]
-[ext_resource path="res://assets/addButton_normal.png" type="Texture" id=6]
-[ext_resource path="res://assets/deleteButton_normal.png" type="Texture" id=7]
+[ext_resource path="res://Scripts/MainScript.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Components/GridScript.gd" type="Script" id=8]
 [ext_resource path="res://assets/fonts/FredokaOne-Regular.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://assets/themes/main_theme.tres" type="Theme" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
@@ -18,6 +14,7 @@ font_data = ExtResource( 9 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
+theme = ExtResource( 10 )
 custom_constants/margin_right = 2
 script = ExtResource( 1 )
 __meta__ = {
@@ -32,6 +29,17 @@ custom_constants/margin_right = 120
 custom_constants/margin_top = 100
 custom_constants/margin_left = 120
 
+[node name="ThemeSwitch" type="CheckButton" parent="App"]
+margin_left = 742.0
+margin_top = 100.0
+margin_right = 902.0
+margin_bottom = 132.0
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 8
+size_flags_vertical = 2
+pressed = true
+text = "Light theme"
+
 [node name="OptionalSettingsMain" type="VBoxContainer" parent="App"]
 margin_left = 120.0
 margin_top = 100.0
@@ -42,214 +50,203 @@ custom_constants/separation = 5
 
 [node name="HBoxContainer" type="HBoxContainer" parent="App/OptionalSettingsMain"]
 margin_right = 782.0
-margin_bottom = 20.0
+margin_bottom = 24.0
+mouse_filter = 2
 custom_constants/separation = 25
 
 [node name="Label" type="Label" parent="App/OptionalSettingsMain/HBoxContainer"]
-margin_top = 3.0
-margin_right = 135.0
-margin_bottom = 17.0
+margin_top = 2.0
+margin_right = 175.0
+margin_bottom = 22.0
 text = "Advanced settings"
 uppercase = true
 
 [node name="OpenSettings" type="Button" parent="App/OptionalSettingsMain/HBoxContainer"]
-margin_left = 160.0
-margin_right = 207.0
-margin_bottom = 20.0
+margin_left = 200.0
+margin_right = 252.0
+margin_bottom = 24.0
 mouse_default_cursor_shape = 2
 text = "Open"
 
 [node name="OptionalSettings" type="VBoxContainer" parent="App/OptionalSettingsMain"]
 visible = false
-margin_top = 25.0
+margin_top = 29.0
 margin_right = 782.0
-margin_bottom = 246.0
-custom_constants/separation = 15
+margin_bottom = 325.0
+custom_constants/separation = 20
 
 [node name="FailureSettings" type="VBoxContainer" parent="App/OptionalSettingsMain/OptionalSettings"]
 margin_right = 782.0
-margin_bottom = 62.0
-custom_constants/separation = 5
+margin_bottom = 84.0
+custom_constants/separation = 10
 
 [node name="FailureText" type="Label" parent="App/OptionalSettingsMain/OptionalSettings/FailureSettings"]
 margin_right = 782.0
-margin_bottom = 14.0
+margin_bottom = 20.0
 text = "Failure value"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="App/OptionalSettingsMain/OptionalSettings/FailureSettings"]
-margin_top = 19.0
+margin_top = 30.0
 margin_right = 782.0
-margin_bottom = 43.0
+margin_bottom = 54.0
 custom_constants/separation = 10
 
 [node name="FailureValue" type="SpinBox" parent="App/OptionalSettingsMain/OptionalSettings/FailureSettings/HBoxContainer"]
-margin_right = 74.0
+margin_right = 66.0
 margin_bottom = 24.0
 mouse_default_cursor_shape = 2
 min_value = 1.0
 value = 1.0
 rounded = true
 
-[node name="DecreaseButtonFailure" type="TextureButton" parent="App/OptionalSettingsMain/OptionalSettings/FailureSettings/HBoxContainer"]
-margin_left = 84.0
-margin_top = 4.0
-margin_right = 100.0
-margin_bottom = 20.0
+[node name="DecreaseButtonFailure" type="Button" parent="App/OptionalSettingsMain/OptionalSettings/FailureSettings/HBoxContainer"]
+margin_left = 76.0
+margin_right = 150.0
+margin_bottom = 24.0
 hint_tooltip = "Remove a value from the failure values -list"
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture_normal = ExtResource( 7 )
-texture_pressed = ExtResource( 3 )
-texture_hover = ExtResource( 5 )
+text = "Remove"
 
-[node name="AddButtonFailure" type="TextureButton" parent="App/OptionalSettingsMain/OptionalSettings/FailureSettings/HBoxContainer"]
-margin_left = 110.0
-margin_top = 4.0
-margin_right = 126.0
-margin_bottom = 20.0
+[node name="AddButtonFailure" type="Button" parent="App/OptionalSettingsMain/OptionalSettings/FailureSettings/HBoxContainer"]
+margin_left = 160.0
+margin_right = 204.0
+margin_bottom = 24.0
 hint_tooltip = "Add the value to the failure values -list"
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture_normal = ExtResource( 6 )
-texture_pressed = ExtResource( 2 )
-texture_hover = ExtResource( 4 )
+text = "Add"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="App/OptionalSettingsMain/OptionalSettings/FailureSettings"]
-margin_top = 48.0
+margin_top = 64.0
 margin_right = 782.0
-margin_bottom = 62.0
+margin_bottom = 84.0
 
 [node name="Label" type="Label" parent="App/OptionalSettingsMain/OptionalSettings/FailureSettings/HBoxContainer2"]
-margin_right = 96.0
-margin_bottom = 14.0
+margin_right = 119.0
+margin_bottom = 20.0
 hint_tooltip = "Current failure values"
 mouse_filter = 0
 text = "Failure values: "
 align = 1
 
 [node name="FailureValuesArray" type="Label" parent="App/OptionalSettingsMain/OptionalSettings/FailureSettings/HBoxContainer2"]
-margin_left = 100.0
-margin_right = 112.0
-margin_bottom = 14.0
+margin_left = 123.0
+margin_right = 135.0
+margin_bottom = 20.0
 text = "..."
 
 [node name="SuccessSettings" type="VBoxContainer" parent="App/OptionalSettingsMain/OptionalSettings"]
-margin_top = 77.0
+margin_top = 104.0
 margin_right = 782.0
-margin_bottom = 139.0
-custom_constants/separation = 5
+margin_bottom = 188.0
+custom_constants/separation = 10
 
 [node name="SuccessText" type="Label" parent="App/OptionalSettingsMain/OptionalSettings/SuccessSettings"]
 margin_right = 782.0
-margin_bottom = 14.0
+margin_bottom = 20.0
 text = "Success value"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="App/OptionalSettingsMain/OptionalSettings/SuccessSettings"]
-margin_top = 19.0
+margin_top = 30.0
 margin_right = 782.0
-margin_bottom = 43.0
+margin_bottom = 54.0
 custom_constants/separation = 10
 
 [node name="SuccessValue" type="SpinBox" parent="App/OptionalSettingsMain/OptionalSettings/SuccessSettings/HBoxContainer2"]
-margin_right = 74.0
+margin_right = 66.0
 margin_bottom = 24.0
 mouse_default_cursor_shape = 2
 min_value = 1.0
 value = 1.0
 rounded = true
 
-[node name="DecreaseButtonSuccess" type="TextureButton" parent="App/OptionalSettingsMain/OptionalSettings/SuccessSettings/HBoxContainer2"]
-margin_left = 84.0
-margin_top = 4.0
-margin_right = 100.0
-margin_bottom = 20.0
+[node name="DecreaseButtonSuccess" type="Button" parent="App/OptionalSettingsMain/OptionalSettings/SuccessSettings/HBoxContainer2"]
+margin_left = 76.0
+margin_right = 150.0
+margin_bottom = 24.0
 hint_tooltip = "Remove a value from the success values -list"
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture_normal = ExtResource( 7 )
-texture_pressed = ExtResource( 3 )
-texture_hover = ExtResource( 5 )
+text = "Remove"
 
-[node name="AddButtonSuccess" type="TextureButton" parent="App/OptionalSettingsMain/OptionalSettings/SuccessSettings/HBoxContainer2"]
-margin_left = 110.0
-margin_top = 4.0
-margin_right = 126.0
-margin_bottom = 20.0
+[node name="AddButtonSuccess" type="Button" parent="App/OptionalSettingsMain/OptionalSettings/SuccessSettings/HBoxContainer2"]
+margin_left = 160.0
+margin_right = 204.0
+margin_bottom = 24.0
 hint_tooltip = "Add the value to the success values -list"
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture_normal = ExtResource( 6 )
-texture_pressed = ExtResource( 2 )
-texture_hover = ExtResource( 4 )
+text = "Add"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="App/OptionalSettingsMain/OptionalSettings/SuccessSettings"]
-margin_top = 48.0
+margin_top = 64.0
 margin_right = 782.0
-margin_bottom = 62.0
+margin_bottom = 84.0
 
 [node name="Label2" type="Label" parent="App/OptionalSettingsMain/OptionalSettings/SuccessSettings/HBoxContainer"]
-margin_right = 104.0
-margin_bottom = 14.0
+margin_right = 124.0
+margin_bottom = 20.0
 hint_tooltip = "Current success values"
 mouse_filter = 0
 text = "Success values: "
 align = 1
 
 [node name="SuccessValuesArray" type="Label" parent="App/OptionalSettingsMain/OptionalSettings/SuccessSettings/HBoxContainer"]
-margin_left = 108.0
-margin_right = 120.0
-margin_bottom = 14.0
+margin_left = 128.0
+margin_right = 140.0
+margin_bottom = 20.0
 text = "..."
 
 [node name="OptionalResultHBox" type="HBoxContainer" parent="App/OptionalSettingsMain/OptionalSettings"]
-margin_top = 154.0
+margin_top = 208.0
 margin_right = 782.0
-margin_bottom = 186.0
+margin_bottom = 252.0
 custom_constants/separation = 50
 
 [node name="FailureVBox" type="VBoxContainer" parent="App/OptionalSettingsMain/OptionalSettings/OptionalResultHBox"]
-margin_right = 50.0
-margin_bottom = 32.0
+margin_right = 63.0
+margin_bottom = 44.0
 
 [node name="FailureResultText" type="Label" parent="App/OptionalSettingsMain/OptionalSettings/OptionalResultHBox/FailureVBox"]
-margin_right = 50.0
-margin_bottom = 14.0
+margin_right = 63.0
+margin_bottom = 20.0
 text = "Failures"
 
 [node name="FailureResultValue" type="Label" parent="App/OptionalSettingsMain/OptionalSettings/OptionalResultHBox/FailureVBox"]
-margin_top = 18.0
-margin_right = 50.0
-margin_bottom = 32.0
+margin_top = 24.0
+margin_right = 63.0
+margin_bottom = 44.0
 text = "..."
 align = 1
 valign = 1
 
 [node name="SuccessVBox" type="VBoxContainer" parent="App/OptionalSettingsMain/OptionalSettings/OptionalResultHBox"]
-margin_left = 100.0
-margin_right = 166.0
-margin_bottom = 32.0
+margin_left = 113.0
+margin_right = 190.0
+margin_bottom = 44.0
 
 [node name="SuccessResultText" type="Label" parent="App/OptionalSettingsMain/OptionalSettings/OptionalResultHBox/SuccessVBox"]
-margin_right = 66.0
-margin_bottom = 14.0
+margin_right = 77.0
+margin_bottom = 20.0
 text = "Successes"
 
 [node name="SuccessResultValue" type="Label" parent="App/OptionalSettingsMain/OptionalSettings/OptionalResultHBox/SuccessVBox"]
-margin_top = 18.0
-margin_right = 66.0
-margin_bottom = 32.0
+margin_top = 24.0
+margin_right = 77.0
+margin_bottom = 44.0
 text = "..."
 align = 1
 valign = 1
 
 [node name="ClearOptionalValues" type="Button" parent="App/OptionalSettingsMain/OptionalSettings"]
-margin_top = 201.0
+margin_top = 272.0
 margin_right = 150.0
-margin_bottom = 221.0
+margin_bottom = 296.0
 rect_min_size = Vector2( 150, 0 )
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 0
@@ -264,13 +261,13 @@ mouse_filter = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="App/VBoxContainer"]
 margin_right = 782.0
-margin_bottom = 322.0
+margin_bottom = 282.0
 mouse_filter = 2
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="App/VBoxContainer/HBoxContainer"]
 margin_right = 782.0
-margin_bottom = 322.0
+margin_bottom = 282.0
 mouse_filter = 2
 size_flags_horizontal = 3
 
@@ -286,51 +283,63 @@ text = "Dice Roller 2000"
 [node name="CenterContainer" type="CenterContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_top = 34.0
 margin_right = 782.0
-margin_bottom = 322.0
+margin_bottom = 282.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Container" type="VBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer"]
-margin_left = 281.0
-margin_top = 50.0
-margin_right = 501.0
-margin_bottom = 237.0
+[node name="CenterMargin" type="MarginContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer"]
+margin_left = 95.0
+margin_top = 24.0
+margin_right = 687.0
+margin_bottom = 223.0
+mouse_filter = 2
+custom_constants/margin_left = 182
+
+[node name="CenterHBox" type="HBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin"]
+margin_left = 182.0
+margin_right = 592.0
+margin_bottom = 199.0
+custom_constants/separation = 30
+
+[node name="Container" type="VBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox"]
+margin_right = 220.0
+margin_bottom = 199.0
 custom_constants/separation = 25
 
-[node name="HBoxContainer" type="HBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/Container"]
+[node name="HBoxContainer" type="HBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/Container"]
 margin_right = 220.0
-margin_bottom = 58.0
+margin_bottom = 64.0
 
-[node name="Options" type="HBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/Container/HBoxContainer"]
+[node name="Options" type="HBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/Container/HBoxContainer"]
 margin_right = 220.0
-margin_bottom = 58.0
+margin_bottom = 64.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 20
 alignment = 1
 
-[node name="DiceSettings" type="VBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/Container/HBoxContainer/Options"]
+[node name="DiceSettings" type="VBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/Container/HBoxContainer/Options"]
 margin_right = 100.0
-margin_bottom = 58.0
+margin_bottom = 64.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/Container/HBoxContainer/Options/DiceSettings"]
+[node name="HBoxContainer" type="HBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/Container/HBoxContainer/Options/DiceSettings"]
 margin_right = 100.0
-margin_bottom = 14.0
+margin_bottom = 20.0
 
-[node name="DiceText" type="Label" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/Container/HBoxContainer/Options/DiceSettings/HBoxContainer"]
-margin_right = 66.0
-margin_bottom = 14.0
+[node name="DiceText" type="Label" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/Container/HBoxContainer/Options/DiceSettings/HBoxContainer"]
+margin_right = 78.0
+margin_bottom = 20.0
 hint_tooltip = "How many sides the dice have
 Example: D6 have six faces"
 mouse_filter = 0
 text = "Dice faces"
 valign = 1
 
-[node name="Dice" type="SpinBox" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/Container/HBoxContainer/Options/DiceSettings"]
-margin_top = 18.0
+[node name="Dice" type="SpinBox" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/Container/HBoxContainer/Options/DiceSettings"]
+margin_top = 24.0
 margin_right = 100.0
-margin_bottom = 58.0
+margin_bottom = 64.0
 rect_min_size = Vector2( 100, 40 )
 mouse_default_cursor_shape = 2
 min_value = 2.0
@@ -339,23 +348,23 @@ value = 2.0
 rounded = true
 align = 1
 
-[node name="AmountSettings" type="VBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/Container/HBoxContainer/Options"]
+[node name="AmountSettings" type="VBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/Container/HBoxContainer/Options"]
 margin_left = 120.0
 margin_right = 220.0
-margin_bottom = 58.0
+margin_bottom = 64.0
 
-[node name="AmountText" type="Label" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/Container/HBoxContainer/Options/AmountSettings"]
+[node name="AmountText" type="Label" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/Container/HBoxContainer/Options/AmountSettings"]
 margin_right = 100.0
-margin_bottom = 14.0
+margin_bottom = 20.0
 hint_tooltip = "How many dices will be rolled"
 mouse_filter = 0
 text = "Dice amount"
 valign = 1
 
-[node name="Amount" type="SpinBox" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/Container/HBoxContainer/Options/AmountSettings"]
-margin_top = 18.0
+[node name="Amount" type="SpinBox" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/Container/HBoxContainer/Options/AmountSettings"]
+margin_top = 24.0
 margin_right = 100.0
-margin_bottom = 58.0
+margin_bottom = 64.0
 rect_min_size = Vector2( 100, 40 )
 mouse_default_cursor_shape = 2
 min_value = 1.0
@@ -364,70 +373,139 @@ value = 1.0
 rounded = true
 align = 1
 
-[node name="Roll" type="Button" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/Container"]
-margin_top = 83.0
+[node name="Roll" type="Button" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/Container"]
+margin_top = 89.0
 margin_right = 220.0
-margin_bottom = 123.0
+margin_bottom = 129.0
 rect_min_size = Vector2( 100, 40 )
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 5
 text = "Roll"
 
-[node name="Results" type="VBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/Container"]
-margin_top = 148.0
+[node name="Results" type="VBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/Container"]
+margin_top = 154.0
 margin_right = 220.0
-margin_bottom = 187.0
+margin_bottom = 199.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 0
 alignment = 1
 
-[node name="ResultText" type="Label" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/Container/Results"]
+[node name="ResultText" type="Label" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/Container/Results"]
 margin_right = 220.0
-margin_bottom = 14.0
-hint_tooltip = "All rolled dices count together"
+margin_bottom = 20.0
+hint_tooltip = "Total sum, when dice values are combined."
 mouse_filter = 0
 text = "Total"
 align = 1
 valign = 1
 
-[node name="Result" type="Label" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/Container/Results"]
+[node name="Result" type="Label" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/Container/Results"]
 margin_left = 97.0
-margin_top = 14.0
+margin_top = 20.0
 margin_right = 122.0
-margin_bottom = 39.0
+margin_bottom = 45.0
 rect_min_size = Vector2( 25, 25 )
 size_flags_horizontal = 4
 text = "..."
 align = 1
 valign = 1
 
+[node name="QuickSelection" type="VBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox"]
+margin_left = 250.0
+margin_right = 410.0
+margin_bottom = 199.0
+
+[node name="Header" type="HBoxContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/QuickSelection"]
+margin_right = 160.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 160, 0 )
+custom_constants/separation = 10
+
+[node name="Label" type="Label" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/QuickSelection/Header"]
+margin_top = 2.0
+margin_right = 95.0
+margin_bottom = 22.0
+text = "Quick Select"
+
+[node name="OpenButton" type="Button" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/QuickSelection/Header"]
+margin_left = 105.0
+margin_right = 157.0
+margin_bottom = 24.0
+mouse_default_cursor_shape = 2
+text = "Open"
+
+[node name="DiceList" type="ItemList" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/QuickSelection"]
+visible = false
+margin_top = 28.0
+margin_right = 160.0
+margin_bottom = 199.0
+rect_min_size = Vector2( 80, 0 )
+mouse_default_cursor_shape = 2
+size_flags_vertical = 3
+items = [ "D4", null, false, "D6", null, false, "D8", null, false, "D10", null, false, "D12", null, false, "D20", null, false ]
+allow_reselect = true
+
 [node name="RolledDicesArray" type="VBoxContainer" parent="App/VBoxContainer"]
-margin_top = 326.0
+margin_top = 286.0
 margin_right = 782.0
 margin_bottom = 500.0
 grow_vertical = 2
+mouse_filter = 2
 alignment = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="App/VBoxContainer/RolledDicesArray"]
+[node name="AnimationSettings" type="HBoxContainer" parent="App/VBoxContainer/RolledDicesArray"]
 margin_right = 782.0
-margin_bottom = 20.0
+margin_bottom = 32.0
+mouse_filter = 2
+alignment = 1
+
+[node name="AnimToggle" type="CheckButton" parent="App/VBoxContainer/RolledDicesArray/AnimationSettings"]
+margin_left = 252.0
+margin_right = 409.0
+margin_bottom = 32.0
+hint_tooltip = "Enable dice rolling animations.
+Disable if you want to see results instantly."
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 4
+text = "Animations"
+
+[node name="AnimTimeLabel" type="Label" parent="App/VBoxContainer/RolledDicesArray/AnimationSettings"]
+margin_left = 413.0
+margin_top = 6.0
+margin_right = 460.0
+margin_bottom = 26.0
+text = "Time: "
+
+[node name="AnimTime" type="SpinBox" parent="App/VBoxContainer/RolledDicesArray/AnimationSettings"]
+margin_left = 464.0
+margin_right = 530.0
+margin_bottom = 32.0
+hint_tooltip = "Animation time for a single roll. Default: 1 second"
+min_value = 1.0
+value = 1.0
+suffix = "sec"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="App/VBoxContainer/RolledDicesArray"]
+margin_top = 36.0
+margin_right = 782.0
+margin_bottom = 60.0
 custom_constants/separation = 10
 alignment = 1
 
 [node name="RolledDices" type="Label" parent="App/VBoxContainer/RolledDicesArray/HBoxContainer"]
-margin_left = 326.0
-margin_top = 3.0
-margin_right = 408.0
-margin_bottom = 17.0
-text = "Rolled dices:"
+margin_left = 319.0
+margin_top = 2.0
+margin_right = 407.0
+margin_bottom = 22.0
+text = "Rolled dice:"
 align = 1
 valign = 1
 
 [node name="SortButton" type="Button" parent="App/VBoxContainer/RolledDicesArray/HBoxContainer"]
-margin_left = 418.0
-margin_right = 455.0
-margin_bottom = 20.0
+margin_left = 417.0
+margin_right = 462.0
+margin_bottom = 24.0
 focus_mode = 0
 disabled = true
 text = "Sort"
@@ -446,9 +524,9 @@ valign = 1
 autowrap = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="App/VBoxContainer/RolledDicesArray"]
-margin_top = 24.0
+margin_top = 64.0
 margin_right = 782.0
-margin_bottom = 174.0
+margin_bottom = 214.0
 rect_min_size = Vector2( 400, 150 )
 size_flags_horizontal = 3
 follow_focus = true
@@ -459,21 +537,26 @@ margin_right = 391.0
 rect_clip_content = true
 size_flags_horizontal = 6
 columns = 100
+script = ExtResource( 8 )
 
 [node name="VersionLabel" type="Label" parent="."]
-margin_left = 962.0
-margin_top = 586.0
+margin_left = 956.0
+margin_top = 580.0
 margin_right = 1022.0
 margin_bottom = 600.0
 size_flags_horizontal = 8
 size_flags_vertical = 8
-text = "ver. 1.0.0"
+text = "ver. 1.1.0"
 
+[connection signal="toggled" from="App/ThemeSwitch" to="." method="_on_ThemeSwitch_toggled"]
 [connection signal="pressed" from="App/OptionalSettingsMain/HBoxContainer/OpenSettings" to="." method="_on_OpenSettings_pressed"]
 [connection signal="pressed" from="App/OptionalSettingsMain/OptionalSettings/FailureSettings/HBoxContainer/DecreaseButtonFailure" to="." method="_on_DecreaseButtonFailure_pressed"]
 [connection signal="pressed" from="App/OptionalSettingsMain/OptionalSettings/FailureSettings/HBoxContainer/AddButtonFailure" to="." method="_on_AddButtonFailure_pressed"]
 [connection signal="pressed" from="App/OptionalSettingsMain/OptionalSettings/SuccessSettings/HBoxContainer2/DecreaseButtonSuccess" to="." method="_on_DecreaseButtonSuccess_pressed"]
 [connection signal="pressed" from="App/OptionalSettingsMain/OptionalSettings/SuccessSettings/HBoxContainer2/AddButtonSuccess" to="." method="_on_AddButtonSuccess_pressed"]
 [connection signal="pressed" from="App/OptionalSettingsMain/OptionalSettings/ClearOptionalValues" to="." method="_on_ClearOptionalValues_pressed"]
-[connection signal="pressed" from="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/Container/Roll" to="." method="_on_Roll_pressed"]
+[connection signal="pressed" from="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/Container/Roll" to="." method="_on_Roll_pressed"]
+[connection signal="pressed" from="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/QuickSelection/Header/OpenButton" to="." method="_on_QuickSelectOpenButton_pressed"]
+[connection signal="item_selected" from="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/QuickSelection/DiceList" to="." method="_on_DiceList_item_selected"]
+[connection signal="toggled" from="App/VBoxContainer/RolledDicesArray/AnimationSettings/AnimToggle" to="." method="_on_AnimToggle_toggled"]
 [connection signal="pressed" from="App/VBoxContainer/RolledDicesArray/HBoxContainer/SortButton" to="." method="_on_SortButton_pressed"]
