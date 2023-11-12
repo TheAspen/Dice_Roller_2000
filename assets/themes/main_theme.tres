@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=21 format=2]
+[gd_resource type="Theme" load_steps=22 format=2]
 
 [ext_resource path="res://assets/fonts/FredokaOne-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/arrows_smaller.png" type="Texture" id=2]
@@ -61,6 +61,19 @@ corner_radius_bottom_left = 3
 
 [sub_resource type="StyleBoxFlat" id=21]
 bg_color = Color( 0.654902, 0.654902, 0.654902, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0, 0, 0, 1 )
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id=24]
+bg_color = Color( 0.568627, 0.945098, 0.564706, 1 )
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -157,6 +170,7 @@ Button/styles/focus = SubResource( 23 )
 Button/styles/hover = SubResource( 1 )
 Button/styles/normal = SubResource( 7 )
 Button/styles/pressed = SubResource( 21 )
+CheckBox/styles/pressed = SubResource( 24 )
 CheckButton/styles/focus = SubResource( 16 )
 CheckButton/styles/hover = SubResource( 14 )
 CheckButton/styles/hover_pressed = SubResource( 15 )

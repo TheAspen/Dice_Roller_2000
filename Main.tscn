@@ -261,13 +261,13 @@ mouse_filter = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="App/VBoxContainer"]
 margin_right = 782.0
-margin_bottom = 282.0
+margin_bottom = 254.0
 mouse_filter = 2
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="App/VBoxContainer/HBoxContainer"]
 margin_right = 782.0
-margin_bottom = 282.0
+margin_bottom = 254.0
 mouse_filter = 2
 size_flags_horizontal = 3
 
@@ -283,16 +283,16 @@ text = "Dice Roller 2000"
 [node name="CenterContainer" type="CenterContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_top = 34.0
 margin_right = 782.0
-margin_bottom = 282.0
+margin_bottom = 254.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="CenterMargin" type="MarginContainer" parent="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer"]
 margin_left = 95.0
-margin_top = 24.0
+margin_top = 10.0
 margin_right = 687.0
-margin_bottom = 223.0
+margin_bottom = 209.0
 mouse_filter = 2
 custom_constants/margin_left = 182
 
@@ -446,6 +446,36 @@ size_flags_vertical = 3
 items = [ "D4", null, false, "D6", null, false, "D8", null, false, "D10", null, false, "D12", null, false, "D20", null, false ]
 allow_reselect = true
 
+[node name="Header" type="HBoxContainer" parent="App/VBoxContainer"]
+margin_top = 258.0
+margin_right = 782.0
+margin_bottom = 282.0
+rect_min_size = Vector2( 160, 0 )
+custom_constants/separation = 10
+alignment = 1
+
+[node name="Label" type="Label" parent="App/VBoxContainer/Header"]
+margin_left = 266.0
+margin_top = 2.0
+margin_right = 373.0
+margin_bottom = 22.0
+text = "Previous rolls"
+
+[node name="OpenButton" type="Button" parent="App/VBoxContainer/Header"]
+margin_left = 383.0
+margin_right = 435.0
+margin_bottom = 24.0
+mouse_default_cursor_shape = 2
+text = "Open"
+
+[node name="CheckBox" type="CheckBox" parent="App/VBoxContainer/Header"]
+margin_left = 445.0
+margin_right = 515.0
+margin_bottom = 24.0
+hint_tooltip = "Save previous rolls to file when the app is closed."
+text = "Save"
+align = 1
+
 [node name="RolledDicesArray" type="VBoxContainer" parent="App/VBoxContainer"]
 margin_top = 286.0
 margin_right = 782.0
@@ -540,13 +570,13 @@ columns = 100
 script = ExtResource( 8 )
 
 [node name="VersionLabel" type="Label" parent="."]
-margin_left = 956.0
+margin_left = 953.0
 margin_top = 580.0
 margin_right = 1022.0
 margin_bottom = 600.0
 size_flags_horizontal = 8
 size_flags_vertical = 8
-text = "ver. 1.1.0"
+text = "ver. 1.2.0"
 
 [connection signal="toggled" from="App/ThemeSwitch" to="." method="_on_ThemeSwitch_toggled"]
 [connection signal="pressed" from="App/OptionalSettingsMain/HBoxContainer/OpenSettings" to="." method="_on_OpenSettings_pressed"]
