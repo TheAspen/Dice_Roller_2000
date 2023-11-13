@@ -11,6 +11,7 @@ var settingsOpened = false
 var sorter = null
 var resultTotal = 0
 var showAnimations = false
+var logOpen = false
 
 onready var resultGrid = $App/VBoxContainer/RolledDicesArray/ScrollContainer/GridContainer
 onready var resultLabel = $App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/Container/Results/Result
@@ -30,7 +31,8 @@ onready var decreaseButtonFailure = $App/OptionalSettingsMain/OptionalSettings/F
 onready var addButtonFailure = $App/OptionalSettingsMain/OptionalSettings/FailureSettings/HBoxContainer/AddButtonFailure
 onready var decreaseButtonSuccess = $App/OptionalSettingsMain/OptionalSettings/SuccessSettings/HBoxContainer2/DecreaseButtonSuccess
 onready var addButtonSuccess = $App/OptionalSettingsMain/OptionalSettings/SuccessSettings/HBoxContainer2/AddButtonSuccess
-
+onready var logPanel = $App/LogPanel
+onready var logPanelGrid = $App/LogPanel/MarginContainer/VBoxContainer/ScrollContainer/GridContainer
 
 var mainTheme = preload("res://assets/themes/main_theme.tres")
 var defaultTheme = preload("res://assets/themes/default_theme.tres")
@@ -128,6 +130,9 @@ func _on_Roll_pressed():
 	allowRoll = true
 	sortButton.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 	sortButton.focus_mode = Control.FOCUS_ALL
+	
+	# Save values to log
+	logPanelGrid._createLabels(dice, animTime.value, results, failureValues, successValues, showAnimations)
 	pass
 
 
@@ -298,3 +303,21 @@ func _on_DiceList_item_selected(index):
 	yield(get_tree().create_timer(0.1), "timeout")
 	diceList.unselect(index)
 	pass 
+
+
+func _on_LogOpen_pressed():
+	if(!logOpen):
+		logPanel.show()
+		logOpen = true
+	else:
+		logPanel.hide()
+		logOpen = false
+	pass # Replace with function body.
+
+
+func _on_close_log_pressed():
+	if(logOpen):
+		logPanel.hide()
+		logOpen = false
+		
+	pass # Replace with function body.

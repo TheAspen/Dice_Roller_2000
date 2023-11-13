@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/MainScript.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Components/LogScript.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/Components/GridScript.gd" type="Script" id=8]
 [ext_resource path="res://assets/fonts/FredokaOne-Regular.ttf" type="DynamicFontData" id=9]
 [ext_resource path="res://assets/themes/main_theme.tres" type="Theme" id=10]
@@ -473,6 +474,7 @@ margin_left = 445.0
 margin_right = 515.0
 margin_bottom = 24.0
 hint_tooltip = "Save previous rolls to file when the app is closed."
+mouse_default_cursor_shape = 2
 text = "Save"
 align = 1
 
@@ -569,6 +571,53 @@ size_flags_horizontal = 6
 columns = 100
 script = ExtResource( 8 )
 
+[node name="LogPanel" type="Panel" parent="App"]
+visible = false
+margin_left = 502.0
+margin_top = 200.0
+margin_right = 902.0
+margin_bottom = 500.0
+rect_min_size = Vector2( 400, 300 )
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="App/LogPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 5
+custom_constants/margin_top = 5
+custom_constants/margin_left = 5
+custom_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="App/LogPanel/MarginContainer"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 395.0
+margin_bottom = 295.0
+
+[node name="Button" type="Button" parent="App/LogPanel/MarginContainer/VBoxContainer"]
+margin_left = 335.0
+margin_right = 390.0
+margin_bottom = 24.0
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 8
+text = "Close"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="App/LogPanel/MarginContainer/VBoxContainer"]
+margin_top = 28.0
+margin_right = 390.0
+margin_bottom = 288.0
+rect_min_size = Vector2( 380, 260 )
+follow_focus = true
+
+[node name="GridContainer" type="GridContainer" parent="App/LogPanel/MarginContainer/VBoxContainer/ScrollContainer"]
+margin_left = 195.0
+margin_right = 195.0
+rect_clip_content = true
+size_flags_horizontal = 6
+columns = 100
+script = ExtResource( 2 )
+
 [node name="VersionLabel" type="Label" parent="."]
 margin_left = 953.0
 margin_top = 580.0
@@ -588,5 +637,7 @@ text = "ver. 1.2.0"
 [connection signal="pressed" from="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/Container/Roll" to="." method="_on_Roll_pressed"]
 [connection signal="pressed" from="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/QuickSelection/Header/OpenButton" to="." method="_on_QuickSelectOpenButton_pressed"]
 [connection signal="item_selected" from="App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/QuickSelection/DiceList" to="." method="_on_DiceList_item_selected"]
+[connection signal="pressed" from="App/VBoxContainer/Header/OpenButton" to="." method="_on_LogOpen_pressed"]
 [connection signal="toggled" from="App/VBoxContainer/RolledDicesArray/AnimationSettings/AnimToggle" to="." method="_on_AnimToggle_toggled"]
 [connection signal="pressed" from="App/VBoxContainer/RolledDicesArray/HBoxContainer/SortButton" to="." method="_on_SortButton_pressed"]
+[connection signal="pressed" from="App/LogPanel/MarginContainer/VBoxContainer/Button" to="." method="_on_close_log_pressed"]
