@@ -12,6 +12,7 @@ var sorter = null
 var resultTotal = 0
 var showAnimations = false
 var logOpen = false
+var rollNumber = 0
 
 onready var resultGrid = $App/VBoxContainer/RolledDicesArray/ScrollContainer/GridContainer
 onready var resultLabel = $App/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/CenterMargin/CenterHBox/Container/Results/Result
@@ -107,6 +108,9 @@ func _on_Roll_pressed():
 		return
 	# Clear everything
 	_clearAll()
+	
+	# Update roll count
+	rollNumber += 1
 	#_setRollingTextToGrid()
 	# Wait a bit
 	yield(get_tree().create_timer(0.5), "timeout")
@@ -132,7 +136,7 @@ func _on_Roll_pressed():
 	sortButton.focus_mode = Control.FOCUS_ALL
 	
 	# Save values to log
-	logPanelGrid._createLabels(dice, animTime.value, results, failureValues, successValues, showAnimations)
+	logPanelGrid._createLabels(dice, animTime.value, results, failureValues, successValues, showAnimations, rollNumber)
 	pass
 
 

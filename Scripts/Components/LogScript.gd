@@ -12,10 +12,17 @@ func _getColorToResult(i: int,  failureValues: PoolIntArray, successValues: Pool
 	return null
 
 # Core function, called from MainScript
-func _createLabels(maxValue: int, waitTime: float, results: PoolIntArray, failureValues: PoolIntArray, successValues: PoolIntArray, showAnimations: bool ): 
+func _createLabels(maxValue: int, waitTime: float, results: PoolIntArray, failureValues: PoolIntArray, successValues: PoolIntArray, showAnimations: bool, rollNumber: int ): 
 	for i in range(results.size()):
 		var node = Label.new()
+		if(i == 0):
+			_createRollLabel(rollNumber)
 		node.set_script(labelScript)
 		node._initInstantLabel(results[i],_getColorToResult(i,failureValues,successValues,results))
 		add_child(node)
 pass
+
+func _createRollLabel(rollNumber: int):
+		var node = Label.new()
+		node.text ="Roll " +  var2str(rollNumber) + ": "
+		add_child(node)
